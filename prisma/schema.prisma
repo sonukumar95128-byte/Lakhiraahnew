@@ -212,3 +212,11 @@ model OrderItem {
   quantity        Int
   priceInPaise    Int            // price at time of purchase
 }
+
+// Key-value store for admin panel configuration (banners, settings, collections, etc.)
+// Each row is one logical blob, keyed by name (e.g. "banners", "settings", "collections").
+model SiteConfig {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}

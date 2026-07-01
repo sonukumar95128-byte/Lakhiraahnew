@@ -295,6 +295,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    // Phase 1: restore from localStorage immediately (fast, works offline)
     try {
       const rawProducts = localStorage.getItem(PRODUCTS_KEY);
       if (rawProducts) setProducts(JSON.parse(rawProducts));
@@ -325,7 +326,28 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     } catch {
       // ignore malformed storage
     }
-    setHydrated(true);
+
+    // Phase 2: overwrite with DB values (server-persisted, wins over stale localStorage)
+    fetch("/api/admin/config")
+      .then((r) => r.json())
+      .then((db: Record<string, unknown>) => {
+        if (!db) return;
+        if (db.banners) {
+          const b = db.banners as { heroSlidesAdmin?: typeof seedHeroSlides; promoStrips?: typeof seedPromoStrips };
+          if (b.heroSlidesAdmin) setHeroSlidesAdmin(b.heroSlidesAdmin);
+          if (b.promoStrips) setPromoStrips(b.promoStrips);
+        }
+        if (db.homepage) setHomepageSections(db.homepage as typeof seedHomepageSections);
+        if (db.testimonials) setTestimonials(db.testimonials as typeof seedTestimonials);
+        if (db.collections) setCollections(db.collections as typeof seedCollections);
+        if (db.coupons) setCoupons(db.coupons as typeof seedCoupons);
+        if (db.settings) setSettings(db.settings as typeof seedSettings);
+        if (db.newArrivals) setNewArrivalsSlugs(db.newArrivals as string[]);
+        if (db.bestSellers) setBestSellersSlugs(db.bestSellers as string[]);
+        if (db.productReviews) setProductReviews(db.productReviews as typeof seedTestimonials);
+      })
+      .catch(() => { /* DB not available — localStorage values stay */ })
+      .finally(() => setHydrated(true));
   }, []);
 
   useEffect(() => {
@@ -382,6 +404,25 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     if (!hydrated) return;
     localStorage.setItem(BEST_SELLERS_KEY, JSON.stringify(bestSellersSlugs));
   }, [bestSellersSlugs, hydrated]);
+
+  // Sync to DB (fire-and-forget — never blocks the UI)
+  const syncDb = (key: string, value: unknown) => {
+    fetch("/api/admin/config", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key, value }),
+    }).catch(() => { /* silently ignore if DB unreachable */ });
+  };
+
+  useEffect(() => { if (hydrated) syncDb("banners", { heroSlidesAdmin, promoStrips }); }, [heroSlidesAdmin, promoStrips, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (hydrated) syncDb("homepage", homepageSections); }, [homepageSections, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (hydrated) syncDb("testimonials", testimonials); }, [testimonials, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (hydrated) syncDb("collections", collections); }, [collections, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (hydrated) syncDb("coupons", coupons); }, [coupons, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (hydrated) syncDb("settings", settings); }, [settings, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (hydrated) syncDb("newArrivals", newArrivalsSlugs); }, [newArrivalsSlugs, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (hydrated) syncDb("bestSellers", bestSellersSlugs); }, [bestSellersSlugs, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (hydrated) syncDb("productReviews", productReviews); }, [productReviews, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const updateSettings = (updates: Partial<SiteSettings>) => {
     setSettings((prev) => ({ ...prev, ...updates }));

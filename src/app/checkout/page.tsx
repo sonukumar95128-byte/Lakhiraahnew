@@ -8,6 +8,13 @@ import { dummyProducts, formatRupee, priceToNumber } from "@/lib/dummy-images";
 import { buildWhatsAppOrderUrl } from "@/lib/whatsapp-order";
 import { useCart } from "@/lib/cart-store";
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Razorpay: new (options: Record<string, unknown>) => { open(): void };
+  }
+}
+
 const paymentMethods = [
   { id: "upi", label: "UPI / GPay / PhonePe" },
   { id: "card", label: "Credit / Debit card" },
@@ -68,8 +75,6 @@ export default function CheckoutPage() {
     address.fullName && address.phone && address.line1 && address.city && address.state && address.pincode;
 
   const handleOrderViaWhatsApp = () => {
-    setPlacing(true);
-
     const url = buildWhatsAppOrderUrl({
       items: cartItems.map((i) => ({
         name: i.product.name,
@@ -81,10 +86,66 @@ export default function CheckoutPage() {
       total,
       address,
     });
-
     window.open(url, "_blank", "noopener,noreferrer");
-    setPlacing(false);
     setPlaced(true);
+  };
+
+  const handleRazorpayPayment = async () => {
+    setPlacing(true);
+    try {
+      // Load Razorpay checkout script dynamically
+      if (!window.Razorpay) {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error("Failed to load Razorpay"));
+          document.body.appendChild(script);
+        });
+      }
+
+      const res = await fetch("/api/razorpay/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amountInPaise: total * 100, receipt: `order_${Date.now()}` }),
+      });
+
+      if (!res.ok) throw new Error("create-order failed");
+      const { orderId, amount, currency, keyId } = await res.json();
+
+      const rzp = new window.Razorpay({
+        key: keyId,
+        amount,
+        currency,
+        order_id: orderId,
+        name: "Lakshiraah",
+        description: "Jewellery order",
+        image: "/logo.png",
+        prefill: {
+          name: address.fullName,
+          contact: `${address.countryCode}${address.phone}`,
+        },
+        theme: { color: "#d4a24c" },
+        handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
+          const verify = await fetch("/api/razorpay/verify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(response),
+          });
+          if (verify.ok) {
+            setPlaced(true);
+          } else {
+            alert("Payment verification failed. Please contact support.");
+          }
+        },
+        modal: { ondismiss: () => setPlacing(false) },
+      });
+      rzp.open();
+    } catch {
+      // Razorpay not configured — fall back to WhatsApp
+      handleOrderViaWhatsApp();
+    }
+    setPlacing(false);
   };
 
   if (placed) {
@@ -93,11 +154,13 @@ export default function CheckoutPage() {
         <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full bg-gold-light/30 text-3xl text-gold">
           ✓
         </div>
-        <h1 className="font-heading italic text-3xl text-brand mb-2">We&apos;ve opened WhatsApp for you</h1>
+        <h1 className="font-heading italic text-3xl text-brand mb-2">Order placed!</h1>
         <p className="text-ink/60 text-sm">
-          Send the prefilled message to confirm your order — our team will get back to you to arrange payment and
-          delivery. Online payment will be enabled here directly once Razorpay is connected.
+          Thank you for your order. Our team will confirm your order and delivery within 24 hours.
         </p>
+        <Link href="/jewellery" className="mt-6 inline-block rounded-full bg-brand px-6 py-3 text-sm font-medium text-gold-light hover:bg-brand-secondary transition-colors">
+          Continue shopping
+        </Link>
       </div>
     );
   }
@@ -300,21 +363,30 @@ export default function CheckoutPage() {
                 ))}
               </div>
 
-              <p className="mb-3 rounded-lg bg-gold-light/15 px-3 py-2 text-xs text-brand">
-                Online payment isn&apos;t live yet — place your order via WhatsApp and our team will confirm payment
-                and delivery with you directly.
-              </p>
+              <button
+                onClick={handleRazorpayPayment}
+                disabled={placing}
+                className="mt-1 flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-gold-light hover:bg-brand-secondary disabled:opacity-60 transition-colors"
+              >
+                🔒 {placing ? "Please wait…" : `Pay · ${formatRupee(total)}`}
+              </button>
+
+              <div className="mt-3 flex items-center gap-2">
+                <div className="flex-1 border-t border-beige" />
+                <span className="text-xs text-ink/40">or</span>
+                <div className="flex-1 border-t border-beige" />
+              </div>
 
               <button
                 onClick={handleOrderViaWhatsApp}
                 disabled={placing}
-                className="mt-1 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-medium text-white hover:bg-[#1ebe5b] disabled:opacity-60 transition-colors"
+                className="mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-[#25D366] px-6 py-2.5 text-sm font-medium text-[#25D366] hover:bg-[#25D366]/5 disabled:opacity-60 transition-colors"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.1-.2.1-.3.1-.6 0-1.6-.7-2.6-1.4-3.7-3.1-.3-.4 0-.4.2-.7.1-.2.2-.3.3-.5.1-.2 0-.3 0-.4-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.3-.9 1-.9 2.3 0 1.3 1 2.6 1.1 2.8.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.1-.5-.2z" />
                   <path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.7 3.1 1.1 4.8 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z" />
                 </svg>
-                {placing ? "Opening WhatsApp…" : `Order via WhatsApp · ${formatRupee(total)}`}
+                Order via WhatsApp instead
               </button>
               <p className="mt-2 text-xs text-ink/40 text-center">By placing this order you agree to our terms.</p>
             </div>
