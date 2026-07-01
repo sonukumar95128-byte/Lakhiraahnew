@@ -30,8 +30,7 @@ export default function RegisterPage() {
       setError("Passwords do not match."); return;
     }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 400));
-    const result = register(form.name, form.email, form.phone, form.password);
+    const result = await register(form.name, form.email, form.phone, form.password);
     setLoading(false);
     if (result.ok) {
       router.push("/account");

@@ -29,12 +29,12 @@ export default function AddressesPage() {
   const openEdit = (addr: UserAddress) => { setForm({ ...addr }); setEditId(addr.id); setShowForm(true); };
   const cancel = () => { setShowForm(false); setEditId(null); };
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (editId) {
-      updateAddress(editId, form);
+      await updateAddress(editId, form);
     } else {
-      addAddress(form);
+      await addAddress(form);
     }
     cancel();
   };

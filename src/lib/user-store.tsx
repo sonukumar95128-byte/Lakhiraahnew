@@ -7,7 +7,7 @@ export type UserAddress = {
   fullName: string;
   phone: string;
   line1: string;
-  landmark: string;
+  landmark: string; // mapped from line2
   city: string;
   state: string;
   pincode: string;
@@ -20,7 +20,6 @@ export type UserProfile = {
   name: string;
   email: string;
   phone: string;
-  passwordHash: string; // simple btoa encoding — not production-grade
   createdAt: string;
 };
 
@@ -37,161 +36,158 @@ type UserContextValue = {
   addresses: UserAddress[];
   orders: UserOrder[];
   isLoggedIn: boolean;
+  loading: boolean;
 
-  login: (email: string, password: string) => { ok: boolean; error?: string };
-  register: (name: string, email: string, phone: string, password: string) => { ok: boolean; error?: string };
-  logout: () => void;
-  updateProfile: (updates: Partial<Pick<UserProfile, "name" | "phone">>) => void;
-  changePassword: (current: string, next: string) => { ok: boolean; error?: string };
+  login: (email: string, password: string) => Promise<{ ok: boolean; error?: string }>;
+  register: (name: string, email: string, phone: string, password: string) => Promise<{ ok: boolean; error?: string }>;
+  logout: () => Promise<void>;
+  updateProfile: (updates: Partial<Pick<UserProfile, "name" | "phone">>) => Promise<void>;
+  changePassword: (current: string, next: string) => Promise<{ ok: boolean; error?: string }>;
 
-  addAddress: (address: Omit<UserAddress, "id">) => void;
-  updateAddress: (id: string, updates: Partial<UserAddress>) => void;
-  deleteAddress: (id: string) => void;
-  setDefaultAddress: (id: string) => void;
+  addAddress: (address: Omit<UserAddress, "id">) => Promise<void>;
+  updateAddress: (id: string, updates: Partial<UserAddress>) => Promise<void>;
+  deleteAddress: (id: string) => Promise<void>;
+  setDefaultAddress: (id: string) => Promise<void>;
 };
 
 const UserContext = createContext<UserContextValue | null>(null);
 
-const USERS_KEY = "lakshiraah-users-v1";
-const SESSION_KEY = "lakshiraah-session-v1";
-const ADDRESSES_KEY = "lakshiraah-addresses-v1";
-const ORDERS_KEY = "lakshiraah-user-orders-v1";
-
-function hashPassword(pw: string) {
-  return btoa(unescape(encodeURIComponent(pw)));
-}
-
-function verifyPassword(pw: string, hash: string) {
-  return hashPassword(pw) === hash;
+function dbAddrToLocal(a: Record<string, unknown>): UserAddress {
+  return {
+    id: a.id as string,
+    fullName: a.fullName as string,
+    phone: a.phone as string,
+    line1: a.line1 as string,
+    landmark: (a.line2 as string) ?? "",
+    city: a.city as string,
+    state: a.state as string,
+    pincode: a.pincode as string,
+    country: (a.country as string) ?? "India",
+    isDefault: a.isDefault as boolean,
+  };
 }
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [addresses, setAddresses] = useState<UserAddress[]>([]);
-  const [orders, setOrders] = useState<UserOrder[]>([]);
-  const [hydrated, setHydrated] = useState(false);
+  const [orders] = useState<UserOrder[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  // On mount — check if session cookie exists and load user + addresses
   useEffect(() => {
-    try {
-      const sessionId = localStorage.getItem(SESSION_KEY);
-      if (sessionId) {
-        const users: UserProfile[] = JSON.parse(localStorage.getItem(USERS_KEY) ?? "[]");
-        const found = users.find((u) => u.id === sessionId);
-        if (found) {
-          setUser(found);
-          const allAddresses: Record<string, UserAddress[]> = JSON.parse(
-            localStorage.getItem(ADDRESSES_KEY) ?? "{}"
-          );
-          setAddresses(allAddresses[sessionId] ?? []);
-          const allOrders: Record<string, UserOrder[]> = JSON.parse(
-            localStorage.getItem(ORDERS_KEY) ?? "{}"
-          );
-          setOrders(allOrders[sessionId] ?? []);
+    (async () => {
+      try {
+        const res = await fetch("/api/auth/me");
+        const data = await res.json();
+        if (data) {
+          setUser({ ...data, createdAt: data.createdAt?.slice(0, 10) ?? "" });
+          const addrRes = await fetch("/api/auth/addresses");
+          const addrs = await addrRes.json();
+          if (Array.isArray(addrs)) setAddresses(addrs.map(dbAddrToLocal));
         }
-      }
-    } catch { /* ignore */ }
-    setHydrated(true);
+      } catch { /* offline or not logged in */ }
+      setLoading(false);
+    })();
   }, []);
 
-  const persistAddresses = (userId: string, addrs: UserAddress[]) => {
-    const all: Record<string, UserAddress[]> = JSON.parse(localStorage.getItem(ADDRESSES_KEY) ?? "{}");
-    all[userId] = addrs;
-    localStorage.setItem(ADDRESSES_KEY, JSON.stringify(all));
-  };
-
-  const login = (email: string, password: string) => {
-    const users: UserProfile[] = JSON.parse(localStorage.getItem(USERS_KEY) ?? "[]");
-    const found = users.find((u) => u.email.toLowerCase() === email.toLowerCase());
-    if (!found) return { ok: false, error: "No account found with this email." };
-    if (!verifyPassword(password, found.passwordHash)) return { ok: false, error: "Incorrect password." };
-    setUser(found);
-    localStorage.setItem(SESSION_KEY, found.id);
-    const allAddresses: Record<string, UserAddress[]> = JSON.parse(localStorage.getItem(ADDRESSES_KEY) ?? "{}");
-    setAddresses(allAddresses[found.id] ?? []);
-    const allOrders: Record<string, UserOrder[]> = JSON.parse(localStorage.getItem(ORDERS_KEY) ?? "{}");
-    setOrders(allOrders[found.id] ?? []);
+  const login = async (email: string, password: string) => {
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await res.json();
+    if (!res.ok) return { ok: false, error: data.error ?? "Login failed." };
+    setUser({ ...data.user, createdAt: data.user.createdAt?.slice(0, 10) ?? "" });
+    // load addresses
+    const addrRes = await fetch("/api/auth/addresses");
+    const addrs = await addrRes.json();
+    if (Array.isArray(addrs)) setAddresses(addrs.map(dbAddrToLocal));
     return { ok: true };
   };
 
-  const register = (name: string, email: string, phone: string, password: string) => {
-    const users: UserProfile[] = JSON.parse(localStorage.getItem(USERS_KEY) ?? "[]");
-    if (users.some((u) => u.email.toLowerCase() === email.toLowerCase())) {
-      return { ok: false, error: "An account with this email already exists." };
-    }
-    const newUser: UserProfile = {
-      id: `user-${Date.now()}`,
-      name,
-      email,
-      phone,
-      passwordHash: hashPassword(password),
-      createdAt: new Date().toISOString().slice(0, 10),
-    };
-    users.push(newUser);
-    localStorage.setItem(USERS_KEY, JSON.stringify(users));
-    localStorage.setItem(SESSION_KEY, newUser.id);
-    setUser(newUser);
+  const register = async (name: string, email: string, phone: string, password: string) => {
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, phone, password }),
+    });
+    const data = await res.json();
+    if (!res.ok) return { ok: false, error: data.error ?? "Registration failed." };
+    setUser({ ...data.user, createdAt: data.user.createdAt?.slice(0, 10) ?? "" });
     setAddresses([]);
-    setOrders([]);
     return { ok: true };
   };
 
-  const logout = () => {
-    localStorage.removeItem(SESSION_KEY);
+  const logout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
     setUser(null);
     setAddresses([]);
-    setOrders([]);
   };
 
-  const updateProfile = (updates: Partial<Pick<UserProfile, "name" | "phone">>) => {
-    if (!user) return;
-    const updated = { ...user, ...updates };
-    setUser(updated);
-    const users: UserProfile[] = JSON.parse(localStorage.getItem(USERS_KEY) ?? "[]");
-    localStorage.setItem(USERS_KEY, JSON.stringify(users.map((u) => (u.id === user.id ? updated : u))));
+  const updateProfile = async (updates: Partial<Pick<UserProfile, "name" | "phone">>) => {
+    const res = await fetch("/api/auth/me", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updates),
+    });
+    const data = await res.json();
+    if (res.ok && data.user) setUser({ ...data.user, createdAt: data.user.createdAt?.slice(0, 10) ?? "" });
   };
 
-  const changePassword = (current: string, next: string) => {
-    if (!user) return { ok: false, error: "Not logged in." };
-    if (!verifyPassword(current, user.passwordHash)) return { ok: false, error: "Current password is incorrect." };
-    const updated = { ...user, passwordHash: hashPassword(next) };
-    setUser(updated);
-    const users: UserProfile[] = JSON.parse(localStorage.getItem(USERS_KEY) ?? "[]");
-    localStorage.setItem(USERS_KEY, JSON.stringify(users.map((u) => (u.id === user.id ? updated : u))));
+  const changePassword = async (current: string, next: string) => {
+    const res = await fetch("/api/auth/me/password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currentPassword: current, newPassword: next }),
+    });
+    const data = await res.json();
+    if (!res.ok) return { ok: false, error: data.error ?? "Failed." };
     return { ok: true };
   };
 
-  const addAddress = (address: Omit<UserAddress, "id">) => {
-    if (!user) return;
-    const newAddr: UserAddress = { ...address, id: `addr-${Date.now()}` };
-    const updated = address.isDefault
-      ? [...addresses.map((a) => ({ ...a, isDefault: false })), newAddr]
-      : [...addresses, newAddr];
-    setAddresses(updated);
-    persistAddresses(user.id, updated);
+  const addAddress = async (address: Omit<UserAddress, "id">) => {
+    const res = await fetch("/api/auth/addresses", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(address),
+    });
+    const data = await res.json();
+    if (res.ok && data.address) {
+      const newAddr = dbAddrToLocal(data.address);
+      setAddresses((prev) =>
+        address.isDefault
+          ? [...prev.map((a) => ({ ...a, isDefault: false })), newAddr]
+          : [...prev, newAddr]
+      );
+    }
   };
 
-  const updateAddress = (id: string, updates: Partial<UserAddress>) => {
-    if (!user) return;
-    const updated = addresses.map((a) => (a.id === id ? { ...a, ...updates } : a));
-    setAddresses(updated);
-    persistAddresses(user.id, updated);
+  const updateAddress = async (id: string, updates: Partial<UserAddress>) => {
+    const res = await fetch(`/api/auth/addresses/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updates),
+    });
+    const data = await res.json();
+    if (res.ok && data.address) {
+      const updated = dbAddrToLocal(data.address);
+      setAddresses((prev) =>
+        updates.isDefault
+          ? prev.map((a) => (a.id === id ? updated : { ...a, isDefault: false }))
+          : prev.map((a) => (a.id === id ? updated : a))
+      );
+    }
   };
 
-  const deleteAddress = (id: string) => {
-    if (!user) return;
-    const updated = addresses.filter((a) => a.id !== id);
-    setAddresses(updated);
-    persistAddresses(user.id, updated);
+  const deleteAddress = async (id: string) => {
+    await fetch(`/api/auth/addresses/${id}`, { method: "DELETE" });
+    setAddresses((prev) => prev.filter((a) => a.id !== id));
   };
 
-  const setDefaultAddress = (id: string) => {
-    if (!user) return;
-    const updated = addresses.map((a) => ({ ...a, isDefault: a.id === id }));
-    setAddresses(updated);
-    persistAddresses(user.id, updated);
+  const setDefaultAddress = async (id: string) => {
+    await updateAddress(id, { isDefault: true } as Partial<UserAddress>);
   };
-
-  if (!hydrated) return null;
 
   return (
     <UserContext.Provider
@@ -200,6 +196,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
         addresses,
         orders,
         isLoggedIn: !!user,
+        loading,
         login,
         register,
         logout,

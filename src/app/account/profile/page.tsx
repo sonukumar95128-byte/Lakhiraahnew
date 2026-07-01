@@ -17,19 +17,19 @@ export default function ProfilePage() {
   const [pwSaved, setPwSaved] = useState(false);
   const [showPw, setShowPw] = useState(false);
 
-  const handleSaveProfile = (e: React.FormEvent) => {
+  const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
-    updateProfile({ name, phone });
+    await updateProfile({ name, phone });
     setProfileSaved(true);
     setTimeout(() => setProfileSaved(false), 3000);
   };
 
-  const handleChangePassword = (e: React.FormEvent) => {
+  const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setPwError("");
     if (newPw.length < 6) { setPwError("New password must be at least 6 characters."); return; }
     if (newPw !== confirmPw) { setPwError("Passwords do not match."); return; }
-    const result = changePassword(currentPw, newPw);
+    const result = await changePassword(currentPw, newPw);
     if (result.ok) {
       setCurrentPw(""); setNewPw(""); setConfirmPw("");
       setPwSaved(true);
