@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-store";
 import { useWishlist } from "@/lib/wishlist-store";
@@ -26,21 +25,19 @@ export function ProductCard({ slug, image, name, price, badge, href }: ProductCa
       <div className="relative aspect-square overflow-hidden bg-beige">
         {href ? (
           <Link href={href} className="block h-full">
-            <Image
+            <img
               src={image}
               alt={name ?? "Jewellery product"}
-              fill
-              sizes="(min-width: 1024px) 25vw, 50vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </Link>
         ) : (
-          <Image
+          <img
             src={image}
             alt={name ?? "Jewellery product"}
-            fill
-            sizes="(min-width: 1024px) 25vw, 50vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
         {badge && (
