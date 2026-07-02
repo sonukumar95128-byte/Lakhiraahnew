@@ -7,7 +7,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum Role {
@@ -103,7 +105,7 @@ model Product {
   description  String?
   category     Category         @relation(fields: [categoryId], references: [id])
   categoryId   String
-  occasions    Json             @default("[]") // string[] e.g. ["Bridal", "Everyday Light", "Gifting"] — MySQL has no native array type
+  occasions    Json             @default("[]") // string[] e.g. ["Bridal", "Everyday Light", "Gifting"]
   isBestseller Boolean          @default(false)
   images       ProductImage[]
   variants     ProductVariant[]

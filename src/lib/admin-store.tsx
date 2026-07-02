@@ -104,7 +104,7 @@ const PRODUCTS_KEY = "lakshiraah-admin-products-v4";
 // v2: bumped after removing the 5 sample/dummy orders.
 const ORDERS_KEY = "lakshiraah-admin-orders-v2";
 // v2: bumped after adding manageHref links to sections.
-const HOMEPAGE_KEY = "lakshiraah-admin-homepage-v2";
+const HOMEPAGE_KEY = "lakshiraah-admin-homepage-v3";
 const BANNERS_KEY = "lakshiraah-admin-banners";
 const TESTIMONIALS_KEY = "lakshiraah-admin-testimonials";
 // v2: productCount replaced with real productSlugs[] for collection-to-product linking.
@@ -121,9 +121,9 @@ const seedProducts: AdminProduct[] = dummyProducts;
 const seedHomepageSections: HomepageSection[] = [
   { id: "hero", label: "Hero slider", meta: "3 active slides", manageLabel: "Manage slides →", manageHref: "/admin/banners", enabled: true },
   { id: "categories", label: "Category circles", meta: "auto from categories", manageLabel: "Pick categories →", enabled: true },
-  { id: "new-arrivals", label: "New Arrivals", meta: "8 products shown", manageLabel: "Choose products →", manageHref: "/admin/homepage/new-arrivals", enabled: true },
-  { id: "offer-banner", label: "Offer banner", meta: "links to /offers", manageLabel: "Edit banner & link →", manageHref: "/admin/banners", enabled: true },
   { id: "best-sellers", label: "Best Sellers", meta: "8 products shown", manageLabel: "Choose products →", manageHref: "/admin/homepage/best-sellers", enabled: true },
+  { id: "offer-banner", label: "Offer banner", meta: "links to /offers", manageLabel: "Edit banner & link →", manageHref: "/admin/banners", enabled: true },
+  { id: "new-arrivals", label: "New Arrivals", meta: "8 products shown", manageLabel: "Choose products →", manageHref: "/admin/homepage/new-arrivals", enabled: true },
   { id: "reels", label: "Styling reels", meta: "9 reels · shows 4", manageLabel: "Manage reels →", enabled: true },
   { id: "collections", label: "Shop by collection", meta: "3 collections", manageLabel: "Choose collections →", manageHref: "/admin/collections", enabled: true },
   { id: "testimonials", label: "Testimonials", meta: "3 approved", manageLabel: "Manage testimonials →", manageHref: "/admin/testimonials", enabled: true },
