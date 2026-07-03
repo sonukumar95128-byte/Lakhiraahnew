@@ -56,6 +56,7 @@ function SearchContent() {
             key={p.slug}
             slug={p.slug}
             image={p.image}
+            hoverImage={p.gallery?.[1]}
             name={p.name}
             price={p.price}
             href={`/jewellery/${categoryToSlug(p.category)}/${p.slug}`}

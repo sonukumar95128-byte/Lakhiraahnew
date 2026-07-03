@@ -7,13 +7,14 @@ import { useWishlist } from "@/lib/wishlist-store";
 type ProductCardProps = {
   slug: string;
   image: string;
+  hoverImage?: string;
   name?: string;
   price?: string;
   badge?: "Bestseller" | "-20%";
   href?: string;
 };
 
-export function ProductCard({ slug, image, name, price, badge, href }: ProductCardProps) {
+export function ProductCard({ slug, image, hoverImage, name, price, badge, href }: ProductCardProps) {
   const { items, addItem } = useCart();
   const inBag = items.some((i) => i.slug === slug);
   const { isWishlisted, toggleWishlist } = useWishlist();
@@ -25,20 +26,46 @@ export function ProductCard({ slug, image, name, price, badge, href }: ProductCa
       <div className="relative aspect-square overflow-hidden bg-beige">
         {href ? (
           <Link href={href} className="block h-full">
+            {/* Primary image */}
             <img
               src={image}
               alt={name ?? "Jewellery product"}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className={
+                "absolute inset-0 h-full w-full object-cover transition-opacity duration-500 " +
+                (hoverImage ? "group-hover:opacity-0" : "group-hover:scale-105 transition-transform")
+              }
             />
+            {/* Hover image */}
+            {hoverImage && (
+              <img
+                src={hoverImage}
+                alt={name ?? "Jewellery product"}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+            )}
           </Link>
         ) : (
-          <img
-            src={image}
-            alt={name ?? "Jewellery product"}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+          <>
+            <img
+              src={image}
+              alt={name ?? "Jewellery product"}
+              loading="lazy"
+              className={
+                "absolute inset-0 h-full w-full object-cover transition-opacity duration-500 " +
+                (hoverImage ? "group-hover:opacity-0" : "group-hover:scale-105 transition-transform")
+              }
+            />
+            {hoverImage && (
+              <img
+                src={hoverImage}
+                alt={name ?? "Jewellery product"}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+            )}
+          </>
         )}
         {badge && (
           <span

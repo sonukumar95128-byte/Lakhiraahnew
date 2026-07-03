@@ -23,6 +23,7 @@ export function CuratedProductGrid({ slugs, badge }: CuratedProductGridProps) {
           key={p.slug}
           slug={p.slug}
           image={p.image}
+          hoverImage={p.gallery?.[1]}
           name={p.name}
           price={p.price}
           badge={badge}
