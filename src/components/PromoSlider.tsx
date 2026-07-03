@@ -25,20 +25,20 @@ export function PromoSlider({ slides }: { slides: PromoStrip[] }) {
       <div className="relative max-w-7xl mx-auto">
 
         {/* Three-slide visible layout */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-stretch gap-3">
 
           {/* Left slide */}
           <div
-            className="hidden sm:block flex-shrink-0 w-[22%] cursor-pointer transition-all duration-500"
+            className="hidden sm:flex flex-shrink-0 w-[25%] cursor-pointer items-center"
             onClick={() => goTo(active - 1)}
           >
-            <div className="relative aspect-[8/3] rounded-2xl overflow-hidden opacity-60 hover:opacity-75 transition-opacity duration-300 shadow-md">
+            <div className="relative w-full h-[75%] rounded-2xl overflow-hidden opacity-65 hover:opacity-80 transition-opacity duration-300 shadow-md">
               <img
                 src={slides[getIndex(-1)].image}
                 alt={slides[getIndex(-1)].title}
-                className="h-full w-full object-cover scale-110"
+                className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/20 rounded-2xl" />
+              <div className="absolute inset-0 bg-black/15 rounded-2xl" />
             </div>
           </div>
 
@@ -107,16 +107,16 @@ export function PromoSlider({ slides }: { slides: PromoStrip[] }) {
 
           {/* Right slide */}
           <div
-            className="hidden sm:block flex-shrink-0 w-[22%] cursor-pointer transition-all duration-500"
+            className="hidden sm:flex flex-shrink-0 w-[25%] cursor-pointer items-center"
             onClick={() => goTo(active + 1)}
           >
-            <div className="relative aspect-[8/3] rounded-2xl overflow-hidden opacity-60 hover:opacity-75 transition-opacity duration-300 shadow-md">
+            <div className="relative w-full h-[75%] rounded-2xl overflow-hidden opacity-65 hover:opacity-80 transition-opacity duration-300 shadow-md">
               <img
                 src={slides[getIndex(1)].image}
                 alt={slides[getIndex(1)].title}
-                className="h-full w-full object-cover scale-110"
+                className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/20 rounded-2xl" />
+              <div className="absolute inset-0 bg-black/15 rounded-2xl" />
             </div>
           </div>
         </div>
