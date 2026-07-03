@@ -5,8 +5,18 @@ import { BannerImagePicker } from "@/components/admin/BannerImagePicker";
 import { useAdmin } from "@/lib/admin-store";
 import { categories } from "@/lib/dummy-images";
 
+const PAGE_BANNER_LABELS: { id: string; label: string }[] = [
+  { id: "shop", label: "Shop / All Jewellery page" },
+  { id: "rings", label: "Rings page" },
+  { id: "earrings", label: "Earrings page" },
+  { id: "necklaces", label: "Necklaces page" },
+  { id: "bracelets", label: "Bracelets page" },
+  { id: "pendants", label: "Pendants page" },
+  { id: "nose-pins", label: "Nose Pins page" },
+];
+
 export default function AdminBannersPage() {
-  const { heroSlidesAdmin, addHeroSlide, updateHeroSlide, toggleHeroSlide, deleteHeroSlide, promoStrips, updatePromoStrip, categoryImages, updateCategoryImage } =
+  const { heroSlidesAdmin, addHeroSlide, updateHeroSlide, toggleHeroSlide, deleteHeroSlide, promoStrips, updatePromoStrip, categoryImages, updateCategoryImage, pageBanners, updatePageBanner } =
     useAdmin();
 
   return (
@@ -93,6 +103,23 @@ export default function AdminBannersPage() {
               value={categoryImages[cat]}
               onChange={(url) => updateCategoryImage(cat, url)}
             />
+          </div>
+        ))}
+      </div>
+
+      {/* Page banners */}
+      <h2 className="text-sm font-medium text-brand mb-1">Page banners</h2>
+      <p className="text-xs text-ink/50 mb-4">Top banner shown on Shop and each category page</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        {PAGE_BANNER_LABELS.map(({ id, label }) => (
+          <div key={id} className="rounded-xl border border-beige bg-white p-4">
+            <div className="relative aspect-[4/1] rounded-lg overflow-hidden bg-beige border border-beige mb-2">
+              {pageBanners[id] && (
+                <img src={pageBanners[id]} alt={label} className="h-full w-full object-cover" />
+              )}
+            </div>
+            <p className="text-xs font-medium text-brand mb-2">{label}</p>
+            <BannerImagePicker value={pageBanners[id] ?? ""} onChange={(url) => updatePageBanner(id, url)} />
           </div>
         ))}
       </div>

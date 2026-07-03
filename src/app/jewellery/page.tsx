@@ -1,6 +1,8 @@
 import { CategoryListing } from "@/components/CategoryListing";
 import { dummyProducts, promoImage, slugToCategory } from "@/lib/dummy-images";
 
+const SHOP_FALLBACK = promoImage;
+
 export default async function JewelleryPage({
   searchParams,
 }: {
@@ -20,7 +22,8 @@ export default async function JewelleryPage({
   return (
     <CategoryListing
       title={title}
-      bannerImage={promoImage}
+      pageId="shop"
+      fallbackBanner={SHOP_FALLBACK}
       products={products}
       activeCategories={selectedSlugs}
     />

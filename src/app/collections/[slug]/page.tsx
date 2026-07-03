@@ -20,5 +20,5 @@ export default function CollectionDetailPage() {
 
   const products = dummyProducts.filter((p) => collection.productSlugs.includes(p.slug));
 
-  return <CategoryListing title={collection.title} bannerImage={collection.image} products={products} />;
+  return <CategoryListing title={collection.title} pageId={`collection-${slug}`} fallbackBanner={collection.image} products={products} />;
 }

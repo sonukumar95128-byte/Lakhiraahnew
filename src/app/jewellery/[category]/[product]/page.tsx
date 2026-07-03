@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductGallery } from "@/components/ProductGallery";
+import { ProductPagePromo } from "@/components/ProductPagePromo";
 import { ProductPurchasePanel } from "@/components/ProductPurchasePanel";
+import { ProductShareButton } from "@/components/ProductShareButton";
 import { ProductTabs } from "@/components/ProductTabs";
 import { ProductTags } from "@/components/ProductTags";
 import {
@@ -12,7 +13,6 @@ import {
   dummyProducts,
   getCategoryTags,
   getProductBySlug,
-  promoImage,
   slugToCategory,
   styleTags,
 } from "@/lib/dummy-images";
@@ -79,17 +79,7 @@ export default async function ProductDetailPage({
         <div>
           <div className="flex items-start justify-between gap-3 mb-1">
             <p className="text-xs text-ink/40">SKU: {product.sku ?? product.slug.toUpperCase().replace(/-/g, "").slice(0, 12)}</p>
-            <button
-              aria-label="Share"
-              className="grid h-10 w-10 place-items-center rounded-full border border-beige text-ink/60 hover:border-gold hover:text-gold transition-colors"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <circle cx="18" cy="5" r="2.5" />
-                <circle cx="6" cy="12" r="2.5" />
-                <circle cx="18" cy="19" r="2.5" />
-                <path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6" strokeLinecap="round" />
-              </svg>
-            </button>
+            <ProductShareButton name={product.name} />
           </div>
           <h1 className="font-heading italic text-3xl sm:text-4xl text-brand mb-2">{product.name}</h1>
           <ProductPurchasePanel
@@ -115,20 +105,7 @@ export default async function ProductDetailPage({
         <ProductTags categoryTags={getCategoryTags(category)} tags={styleTags} />
       </div>
 
-      {/* Banner */}
-      <div className="mt-12 relative aspect-[16/4] rounded-xl overflow-hidden flex items-center justify-end p-6">
-        <Image src={promoImage} alt="Buy 2 get free gold polish" fill sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand/10 via-transparent to-brand/60" />
-        <div className="relative z-10 text-right">
-          <p className="font-heading italic text-xl text-white mb-2">Buy 2, get free gold polish</p>
-          <Link
-            href="/jewellery"
-            className="inline-block rounded-full bg-gold px-6 py-2 text-sm font-medium text-brand hover:bg-gold-light transition-colors"
-          >
-            Explore
-          </Link>
-        </div>
-      </div>
+      <ProductPagePromo />
 
       {related.length > 0 && (
         <div className="mt-12">

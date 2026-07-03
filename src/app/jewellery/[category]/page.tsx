@@ -37,7 +37,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   return (
     <CategoryListing
       title={category}
-      bannerImage={categoryBannerImages[category]}
+      pageId={slug}
+      fallbackBanner={categoryBannerImages[category]}
       products={products}
       activeCategories={[slug]}
     />

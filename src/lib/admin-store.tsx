@@ -115,6 +115,7 @@ const PRODUCT_REVIEWS_KEY = "lakshiraah-product-reviews";
 const NEW_ARRIVALS_KEY = "lakshiraah-admin-new-arrivals";
 const BEST_SELLERS_KEY = "lakshiraah-admin-best-sellers";
 const CATEGORY_IMAGES_KEY = "lakshiraah-admin-category-images";
+const PAGE_BANNERS_KEY = "lakshiraah-admin-page-banners";
 
 const seedProducts: AdminProduct[] = dummyProducts;
 
@@ -141,7 +142,18 @@ const seedHeroSlides: HeroSlideAdmin[] = heroSlides.map((s, i) => ({
 const seedPromoStrips: PromoStrip[] = [
   { id: "top-of-home", position: "Top of home", title: "Festive sale — flat 20% off", link: "/jewellery?offer=true", image: productImages[6] },
   { id: "mid-home", position: "Mid home", title: "Buy 2 get free gold polish", link: "/jewellery", image: productImages[2] },
+  { id: "product-page", position: "Single product page", title: "Buy 2, get free gold polish", link: "/jewellery", image: productImages[2] },
 ];
+
+const defaultPageBanners: Record<string, string> = {
+  shop: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=1600&h=500&fit=crop",
+  rings: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1600&h=500&fit=crop",
+  earrings: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1600&h=500&fit=crop",
+  necklaces: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1600&h=500&fit=crop",
+  bracelets: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1600&h=500&fit=crop",
+  pendants: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1600&h=500&fit=crop",
+  "nose-pins": "https://images.unsplash.com/photo-1631214524115-de7188ff5402?w=1600&h=500&fit=crop",
+};
 
 const seedTestimonials: AdminTestimonial[] = dummyTestimonials.map((t, i) => ({
   id: `testimonial-${i + 1}`,
@@ -280,6 +292,9 @@ type AdminContextValue = {
 
   categoryImages: Record<string, string>;
   updateCategoryImage: (category: string, url: string) => void;
+
+  pageBanners: Record<string, string>;
+  updatePageBanner: (pageId: string, url: string) => void;
 };
 
 const AdminContext = createContext<AdminContextValue | null>(null);
@@ -298,6 +313,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
   const [newArrivalsSlugs, setNewArrivalsSlugs] = useState<string[]>(seedNewArrivals);
   const [bestSellersSlugs, setBestSellersSlugs] = useState<string[]>(seedBestSellers);
   const [categoryImages, setCategoryImages] = useState<Record<string, string>>(defaultCategoryImages);
+  const [pageBanners, setPageBanners] = useState<Record<string, string>>(defaultPageBanners);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -331,6 +347,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       if (rawBestSellers) setBestSellersSlugs(JSON.parse(rawBestSellers));
       const rawCategoryImages = localStorage.getItem(CATEGORY_IMAGES_KEY);
       if (rawCategoryImages) setCategoryImages(JSON.parse(rawCategoryImages));
+      const rawPageBanners = localStorage.getItem(PAGE_BANNERS_KEY);
+      if (rawPageBanners) setPageBanners(JSON.parse(rawPageBanners));
     } catch {
       // ignore malformed storage
     }
@@ -354,6 +372,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         if (db.bestSellers) setBestSellersSlugs(db.bestSellers as string[]);
         if (db.productReviews) setProductReviews(db.productReviews as ProductReview[]);
         if (db.categoryImages) setCategoryImages(db.categoryImages as Record<string, string>);
+        if (db.pageBanners) setPageBanners(db.pageBanners as Record<string, string>);
       })
       .catch(() => { /* DB not available — localStorage values stay */ })
       .finally(() => setHydrated(true));
@@ -437,6 +456,12 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(CATEGORY_IMAGES_KEY, JSON.stringify(categoryImages));
     syncDb("categoryImages", categoryImages);
   }, [categoryImages, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (!hydrated) return;
+    localStorage.setItem(PAGE_BANNERS_KEY, JSON.stringify(pageBanners));
+    syncDb("pageBanners", pageBanners);
+  }, [pageBanners, hydrated]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const updateSettings = (updates: Partial<SiteSettings>) => {
     setSettings((prev) => ({ ...prev, ...updates }));
@@ -584,6 +609,10 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     setCategoryImages((prev) => ({ ...prev, [category]: url }));
   };
 
+  const updatePageBanner = (pageId: string, url: string) => {
+    setPageBanners((prev) => ({ ...prev, [pageId]: url }));
+  };
+
   return (
     <AdminContext.Provider
       value={{
@@ -632,6 +661,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         setBestSellersSlugs,
         categoryImages,
         updateCategoryImage,
+        pageBanners,
+        updatePageBanner,
       }}
     >
       {children}

@@ -6,15 +6,19 @@ import { Dropdown } from "@/components/Dropdown";
 import { FilterSidebar } from "@/components/FilterSidebar";
 import { InfiniteProductGrid } from "@/components/InfiniteProductGrid";
 import { getPriceRange, type DummyProduct } from "@/lib/dummy-images";
+import { useAdmin } from "@/lib/admin-store";
 
 type CategoryListingProps = {
   title: string;
-  bannerImage: string;
+  pageId: string;
+  fallbackBanner: string;
   products: DummyProduct[];
   activeCategories?: string[];
 };
 
-export function CategoryListing({ title, bannerImage, products, activeCategories }: CategoryListingProps) {
+export function CategoryListing({ title, pageId, fallbackBanner, products, activeCategories }: CategoryListingProps) {
+  const { pageBanners } = useAdmin();
+  const bannerImage = pageBanners[pageId] ?? fallbackBanner;
   const { min, max } = getPriceRange(products);
   const [filterOpen, setFilterOpen] = useState(false);
 
