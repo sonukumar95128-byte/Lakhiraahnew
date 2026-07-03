@@ -8,6 +8,8 @@ import { ProductPurchasePanel } from "@/components/ProductPurchasePanel";
 import { ProductShareButton } from "@/components/ProductShareButton";
 import { ProductTabs } from "@/components/ProductTabs";
 import { ProductTags } from "@/components/ProductTags";
+import { RecentlyViewed } from "@/components/RecentlyViewed";
+import { TrackRecentlyViewed } from "@/components/TrackRecentlyViewed";
 import {
   categoryToSlug,
   dummyProducts,
@@ -105,7 +107,10 @@ export default async function ProductDetailPage({
         <ProductTags categoryTags={getCategoryTags(category)} tags={styleTags} />
       </div>
 
+      <TrackRecentlyViewed slug={product.slug} />
       <ProductPagePromo />
+
+      <RecentlyViewed excludeSlug={product.slug} />
 
       {related.length > 0 && (
         <div className="mt-12">
