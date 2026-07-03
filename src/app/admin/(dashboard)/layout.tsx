@@ -1,7 +1,12 @@
 import Image from "next/image";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { AdminNav } from "@/components/admin/AdminNav";
+import { verifyAdminToken } from "@/lib/adminSession";
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const jar = await cookies();
+  if (!verifyAdminToken(jar.get("admin_auth")?.value)) redirect("/admin/login");
   return (
     <div className="min-h-screen flex bg-ivory">
       <aside className="w-56 shrink-0 sticky top-0 h-screen border-r border-beige bg-brand flex flex-col">

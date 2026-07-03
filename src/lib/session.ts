@@ -4,8 +4,10 @@ import { cookies } from "next/headers";
 const COOKIE = "user_session";
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
-function secret() {
-  return process.env.SESSION_SECRET ?? process.env.ADMIN_PASSWORD ?? "lakshiraah-dev-secret";
+function secret(): string {
+  const s = process.env.SESSION_SECRET;
+  if (!s) throw new Error("SESSION_SECRET env var is not set");
+  return s;
 }
 
 function sign(userId: string): string {

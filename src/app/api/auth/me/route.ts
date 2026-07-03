@@ -25,6 +25,14 @@ export async function PATCH(request: Request) {
 
   try {
     const { name, phone } = await request.json();
+
+    if (typeof name !== "string" || name.trim().length === 0 || name.length > 100) {
+      return NextResponse.json({ error: "Invalid name." }, { status: 400 });
+    }
+    if (phone !== undefined && phone !== null && (typeof phone !== "string" || phone.length > 20)) {
+      return NextResponse.json({ error: "Invalid phone." }, { status: 400 });
+    }
+
     const prisma = getPrisma();
     const user = await prisma.user.update({
       where: { id: userId },

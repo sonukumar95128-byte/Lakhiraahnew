@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { put } from "@vercel/blob";
+import { cookies } from "next/headers";
+import { verifyAdminToken } from "@/lib/adminSession";
 
 const ALLOWED_TYPES: Record<string, string> = {
   "image/jpeg": "jpg",
@@ -12,6 +14,11 @@ const ALLOWED_TYPES: Record<string, string> = {
 const MAX_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB
 
 export async function POST(request: NextRequest) {
+  const jar = await cookies();
+  if (!verifyAdminToken(jar.get("admin_auth")?.value)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File | null;

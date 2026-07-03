@@ -24,6 +24,16 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
+
+    // Input validation
+    const str = (v: unknown, max: number) => typeof v === "string" && v.trim().length > 0 && v.length <= max;
+    if (!str(body.fullName, 100)) return NextResponse.json({ error: "Invalid name." }, { status: 400 });
+    if (!str(body.phone, 20)) return NextResponse.json({ error: "Invalid phone." }, { status: 400 });
+    if (!str(body.line1, 200)) return NextResponse.json({ error: "Invalid address." }, { status: 400 });
+    if (!str(body.city, 100)) return NextResponse.json({ error: "Invalid city." }, { status: 400 });
+    if (!str(body.state, 100)) return NextResponse.json({ error: "Invalid state." }, { status: 400 });
+    if (!/^\d{6}$/.test(body.pincode)) return NextResponse.json({ error: "Invalid pincode." }, { status: 400 });
+
     const prisma = getPrisma();
 
     // If new address is default, clear other defaults first

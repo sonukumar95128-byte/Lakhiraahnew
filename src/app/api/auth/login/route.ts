@@ -16,13 +16,11 @@ export async function POST(request: NextRequest) {
       select: { id: true, name: true, email: true, phone: true, passwordHash: true, createdAt: true },
     });
 
-    if (!user || !user.passwordHash) {
-      return NextResponse.json({ error: "No account found with this email." }, { status: 401 });
-    }
-
-    const ok = await bcrypt.compare(password, user.passwordHash);
-    if (!ok) {
-      return NextResponse.json({ error: "Incorrect password." }, { status: 401 });
+    // Use dummy hash to prevent timing-based email enumeration
+    const DUMMY_HASH = "$2a$10$dummyhashfortimingprotectionXXXXXXXXXXXXXXXXXXXXXXX";
+    const ok = await bcrypt.compare(password, user?.passwordHash ?? DUMMY_HASH);
+    if (!user || !user.passwordHash || !ok) {
+      return NextResponse.json({ error: "Incorrect email or password." }, { status: 401 });
     }
 
     await setUserSession(user.id);

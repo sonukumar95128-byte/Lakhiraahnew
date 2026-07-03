@@ -26,7 +26,7 @@ export async function GET(
         "Cache-Control": "public, max-age=31536000, immutable",
       },
     });
-  } catch (err) {
-    return new NextResponse(`Not found: ${filePath} — ${String(err)}`, { status: 404 });
+  } catch {
+    return new NextResponse("Not found", { status: 404 });
   }
 }

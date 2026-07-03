@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPrisma } from "@/lib/prisma";
 import { cookies } from "next/headers";
+import { verifyAdminToken } from "@/lib/adminSession";
 
 async function isAdmin() {
   const jar = await cookies();
-  return jar.get("admin_auth")?.value === "1";
+  return verifyAdminToken(jar.get("admin_auth")?.value);
 }
 
 // In-memory cache — avoids hitting MySQL on every page load
@@ -15,6 +16,7 @@ function invalidateCache() { cache = null; }
 
 // GET /api/admin/config
 export async function GET(request: NextRequest) {
+  if (!(await isAdmin())) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const key = request.nextUrl.searchParams.get("key");
   try {
     // Serve from memory cache if fresh
