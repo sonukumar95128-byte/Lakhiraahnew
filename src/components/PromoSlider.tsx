@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { PromoStrip } from "@/lib/admin-store";
 
 function GlassArrow({ direction, onClick }: { direction: "left" | "right"; onClick: () => void }) {
@@ -24,15 +23,30 @@ function GlassArrow({ direction, onClick }: { direction: "left" | "right"; onCli
 
 export function PromoSlider({ slides }: { slides: PromoStrip[] }) {
   const [active, setActive] = useState(0);
-
+  const [dir, setDir] = useState<1 | -1>(1); // 1 = going right, -1 = going left
   const count = slides.length;
-  const goTo = (i: number) => setActive((i + count) % count);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const resetTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    if (count <= 1) return;
+    timerRef.current = setInterval(() => {
+      setDir(1);
+      setActive((prev) => (prev + 1) % count);
+    }, 4500);
+  };
 
   useEffect(() => {
-    if (count <= 1) return;
-    const timer = setInterval(() => setActive((prev) => (prev + 1) % count), 4500);
-    return () => clearInterval(timer);
+    resetTimer();
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [count]);
+
+  const goTo = (i: number) => {
+    const target = (i + count) % count;
+    setDir(target > active || (active === count - 1 && target === 0) ? 1 : -1);
+    setActive(target);
+    resetTimer();
+  };
 
   if (count === 0) return null;
 
@@ -44,7 +58,7 @@ export function PromoSlider({ slides }: { slides: PromoStrip[] }) {
       <div className="w-full">
         <div className="flex items-stretch gap-3 px-3">
 
-          {/* Left peek */}
+          {/* Left peek — slides in from left */}
           <div
             className="hidden sm:block flex-shrink-0 w-[18%] rounded-2xl overflow-hidden cursor-pointer opacity-80 hover:opacity-90 transition-opacity duration-300"
             onClick={() => goTo(active - 1)}
@@ -57,31 +71,34 @@ export function PromoSlider({ slides }: { slides: PromoStrip[] }) {
             />
           </div>
 
-          {/* Center main slide */}
-          <div className="relative flex-1 rounded-2xl overflow-hidden shadow-xl" style={{ aspectRatio: "8/3" }}>
-            {slides.map((s, i) => (
-              <div
-                key={s.id}
-                className={
-                  "absolute inset-0 transition-opacity duration-500 " +
-                  (i === active ? "opacity-100 z-10" : "opacity-0 z-0")
-                }
-              >
-                <img src={s.image} alt={s.title} className="h-full w-full object-cover" />
-                {s.title && (
-                  <>
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-8 z-10">
-                      <p className="font-heading italic text-xl sm:text-2xl text-white drop-shadow">
-                        {s.title}
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))}
+          {/* Center main slide — sliding track */}
+          <div
+            className="relative flex-1 rounded-2xl overflow-hidden shadow-xl"
+            style={{ aspectRatio: "8/3" }}
+          >
+            {/* Sliding track: all slides in a row, translateX to show active */}
+            <div
+              className="absolute inset-0 flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${active * 100}%)`, width: `${count * 100}%` }}
+            >
+              {slides.map((s) => (
+                <div key={s.id} className="relative h-full" style={{ width: `${100 / count}%` }}>
+                  <img src={s.image} alt={s.title} className="h-full w-full object-cover" />
+                  {s.title && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+                      <div className="absolute bottom-6 left-8 z-10">
+                        <p className="font-heading italic text-xl sm:text-2xl text-white drop-shadow">
+                          {s.title}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
 
-            {/* Same GlassArrow as hero */}
+            {/* Glass arrows */}
             {count > 1 && (
               <>
                 <GlassArrow direction="left" onClick={() => goTo(active - 1)} />
