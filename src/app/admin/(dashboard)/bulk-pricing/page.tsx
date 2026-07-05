@@ -22,7 +22,8 @@ export default function BulkPricingPage() {
 
   const filtered = products.filter((p) => {
     const matchCat = selectedCategory === "all" || p.category === selectedCategory;
-    const matchSearch = p.name.toLowerCase().includes(search.toLowerCase());
+    const q = search.toLowerCase();
+    const matchSearch = p.name.toLowerCase().includes(q) || (p.sku ?? "").toLowerCase().includes(q) || p.slug.toLowerCase().includes(q);
     return matchCat && matchSearch;
   });
 
