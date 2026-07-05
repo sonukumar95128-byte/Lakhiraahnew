@@ -151,7 +151,7 @@ export default function BulkPricingPage() {
               <img src={p.image} alt={p.name} className="h-10 w-10 rounded-lg object-cover shrink-0 bg-beige" />
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-brand truncate">{p.name}</p>
-                <p className="text-xs text-ink/40 capitalize">{p.category}</p>
+                <p className="text-xs text-ink/40 capitalize">{p.category}{p.sku ? <span className="ml-2 font-mono text-ink/30">#{p.sku}</span> : <span className="ml-2 font-mono text-ink/30">#{p.slug.slice(0, 10)}</span>}</p>
               </div>
               <input
                 type="text"
