@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { BannerImagePicker } from "@/components/admin/BannerImagePicker";
@@ -22,7 +22,6 @@ export default function AdminBannersPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-1">
-        <h1 className="font-heading italic text-3xl text-brand">Homepage banners &amp; hero</h1>
         <button
           onClick={addHeroSlide}
           className="rounded-full bg-brand px-5 py-2 text-sm font-medium text-gold-light hover:bg-brand-secondary transition-colors"

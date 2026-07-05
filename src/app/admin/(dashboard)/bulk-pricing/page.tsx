@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import { useAdmin } from "@/lib/admin-store";
@@ -57,7 +57,6 @@ export default function BulkPricingPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="font-heading italic text-3xl text-brand">Bulk Pricing</h1>
         <p className="text-sm text-ink/50 mt-0.5">Update prices for all or selected jewellery at once</p>
       </div>
 

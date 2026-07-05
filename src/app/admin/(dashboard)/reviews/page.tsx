@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useAdmin, type TestimonialStatus } from "@/lib/admin-store";
@@ -18,7 +18,6 @@ export default function AdminProductReviewsPage() {
 
   return (
     <div>
-      <h1 className="font-heading italic text-3xl text-brand mb-6">Product Reviews</h1>
 
       <div className="flex items-center gap-2 mb-4">
         {(["all", "pending", "approved", "rejected"] as const).map((f) => (

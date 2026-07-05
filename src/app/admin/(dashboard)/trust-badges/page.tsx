@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useAdmin } from "@/lib/admin-store";
 
@@ -10,7 +10,6 @@ export default function TrustBadgesPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="font-heading italic text-3xl text-brand">Trust Badges</h1>
         <p className="text-sm text-ink/50 mt-0.5">Shown on homepage in the dark banner strip · toggle to show/hide</p>
       </div>
 

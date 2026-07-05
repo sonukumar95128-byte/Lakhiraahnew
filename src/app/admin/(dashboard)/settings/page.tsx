@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useAdmin } from "@/lib/admin-store";
@@ -16,7 +16,6 @@ export default function AdminSettingsPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="font-heading italic text-3xl text-brand">Settings</h1>
         <button
           onClick={handleSave}
           className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-gold-light hover:bg-brand-secondary transition-colors"

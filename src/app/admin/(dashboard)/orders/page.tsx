@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useAdmin } from "@/lib/admin-store";
 import { orderStatuses, type OrderStatus } from "@/lib/dummy-orders";
@@ -18,7 +18,6 @@ export default function AdminOrdersPage() {
 
   return (
     <div>
-      <h1 className="font-heading italic text-3xl text-brand mb-6">Orders</h1>
 
       <div className="rounded-xl border border-beige bg-white overflow-hidden">
         <table className="w-full text-sm">

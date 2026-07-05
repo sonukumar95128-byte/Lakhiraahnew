@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState } from "react";
 import { useAdmin } from "@/lib/admin-store";
@@ -45,7 +45,6 @@ export default function AdminReelsPage() {
     <div>
       <div className="flex items-center justify-between mb-2">
         <div>
-          <h1 className="font-heading italic text-3xl text-brand">Video Reels</h1>
           <p className="text-sm text-ink/50 mt-0.5">Short videos shown on homepage · autoplay, muted</p>
         </div>
         <button

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 import { useAdmin } from "@/lib/admin-store";
@@ -41,7 +41,6 @@ export default function AdminCustomersPage() {
 
   return (
     <div>
-      <h1 className="font-heading italic text-3xl text-brand mb-6">Customers</h1>
 
       <input
         value={search}

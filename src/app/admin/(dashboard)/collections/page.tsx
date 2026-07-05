@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +12,6 @@ export default function AdminCollectionsPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="font-heading italic text-3xl text-brand">Collections</h1>
         <button
           onClick={addCollection}
           className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-gold-light hover:bg-brand-secondary transition-colors"

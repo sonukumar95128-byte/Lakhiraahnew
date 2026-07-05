@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -65,7 +65,6 @@ export default function AdminProductsPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6 gap-3">
-        <h1 className="font-heading italic text-3xl text-brand shrink-0">Products</h1>
         <div className="flex items-center gap-3 shrink-0">
           <BulkUploadButton open={bulkUploadOpen} onToggle={() => setBulkUploadOpen((o) => !o)} />
           <Link

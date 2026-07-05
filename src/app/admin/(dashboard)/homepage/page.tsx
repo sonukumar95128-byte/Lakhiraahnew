@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -43,7 +43,6 @@ export default function HomepageBuilderPage() {
   return (
     <div>
       <div className="flex items-start justify-between mb-1">
-        <h1 className="font-heading italic text-3xl text-brand">Homepage builder</h1>
         <div className="flex items-center gap-2">
           <button
             onClick={handleSave}

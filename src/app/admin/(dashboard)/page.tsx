@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useAdmin } from "@/lib/admin-store";
@@ -22,7 +22,6 @@ export default function AdminDashboardPage() {
 
   return (
     <div>
-      <h1 className="font-heading italic text-3xl text-brand mb-6">Dashboard</h1>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
         {stats.map((s) => (
