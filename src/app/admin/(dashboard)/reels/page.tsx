@@ -65,7 +65,7 @@ export default function AdminReelsPage() {
         {reels.map((reel) => (
           <div key={reel.id} className="rounded-xl border border-beige bg-white overflow-hidden">
             {/* Video preview */}
-            <div className="relative bg-black" style={{ aspectRatio: "9/16", maxHeight: 260 }}>
+            <div className="relative bg-black" style={{ aspectRatio: (reel.format ?? "portrait") === "landscape" ? "16/9" : "9/16", maxHeight: 260 }}>
               {(() => {
                 const ytId = reel.videoUrl ? getYoutubeId(reel.videoUrl) : null;
                 if (ytId) {
@@ -110,6 +110,25 @@ export default function AdminReelsPage() {
                 placeholder="Reel title (optional)"
                 className="w-full rounded-lg border border-beige px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
               />
+
+              {/* Format toggle */}
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-ink/50 shrink-0">Format:</span>
+                {(["portrait", "landscape"] as const).map((fmt) => (
+                  <button
+                    key={fmt}
+                    onClick={() => updateReel(reel.id, { format: fmt })}
+                    className={
+                      "rounded-full px-3 py-1 text-xs transition-colors " +
+                      ((reel.format ?? "portrait") === fmt
+                        ? "bg-brand text-gold-light"
+                        : "border border-beige text-ink/50 hover:border-gold")
+                    }
+                  >
+                    {fmt === "portrait" ? "📱 9:16 Portrait" : "🖥️ 16:9 Landscape"}
+                  </button>
+                ))}
+              </div>
 
               {/* Upload video */}
               <label className={

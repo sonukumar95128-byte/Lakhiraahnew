@@ -91,6 +91,7 @@ export type AdminReel = {
   videoUrl: string;
   thumbnail?: string;
   enabled: boolean;
+  format: "portrait" | "landscape"; // portrait = 9:16, landscape = 16:9
 };
 
 export type TrustBadge = {
@@ -681,7 +682,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
 
   const addReel = () => {
     const id = `reel-${Date.now()}`;
-    setReels((prev) => [...prev, { id, title: "", videoUrl: "", enabled: true }]);
+    setReels((prev) => [...prev, { id, title: "", videoUrl: "", enabled: true, format: "portrait" }]);
   };
   const updateReel = (id: string, updates: Partial<AdminReel>) => {
     setReels((prev) => prev.map((r) => (r.id === id ? { ...r, ...updates } : r)));

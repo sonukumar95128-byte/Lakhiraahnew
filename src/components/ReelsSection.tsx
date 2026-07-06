@@ -17,6 +17,79 @@ function getYoutubeId(url: string): string | null {
   return null;
 }
 
+function ReelItem({
+  reel,
+  isCenter,
+  videoRef,
+}: {
+  reel: AdminReel;
+  isCenter: boolean;
+  videoRef?: (el: HTMLVideoElement | null) => void;
+}) {
+  const [playing, setPlaying] = useState(false);
+  const format = reel.format ?? "portrait";
+  const ytId = reel.videoUrl ? getYoutubeId(reel.videoUrl) : null;
+
+  if (ytId) {
+    return (
+      <div className="relative h-full w-full bg-black overflow-hidden">
+        <iframe
+          src={`https://www.youtube.com/embed/${ytId}?autoplay=${isCenter ? 1 : 0}&mute=1&loop=1&playlist=${ytId}&controls=0&playsinline=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1`}
+          className="absolute inset-0 h-full w-full"
+          style={
+            format === "portrait"
+              ? // Scale up to crop the top branding bar (≈ 50px on a 315px-tall embed)
+                { top: "-16%", height: "132%", width: "100%" }
+              : { top: "-8%", height: "116%", width: "100%" }
+          }
+          allow="autoplay; encrypted-media"
+          title={reel.title || "Video reel"}
+        />
+        {/* Play icon overlay for non-center reels */}
+        {!isCenter && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white text-xl">▶</div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  if (reel.videoUrl) {
+    return (
+      <div className="relative h-full w-full bg-black">
+        <video
+          ref={videoRef}
+          src={reel.videoUrl}
+          className="h-full w-full object-cover"
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onClick={() => setPlaying((p) => !p)}
+        />
+        {!isCenter && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white text-xl">▶</div>
+          </div>
+        )}
+        {isCenter && !playing && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="h-14 w-14 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center text-white text-2xl">▶</div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-full w-full bg-brand/10 flex flex-col items-center justify-center text-ink/30 gap-2">
+      <span className="text-4xl">🎬</span>
+      <span className="text-xs">No video</span>
+    </div>
+  );
+}
+
 export function ReelsSection({ reels }: { reels: AdminReel[] }) {
   const activeReels = reels.filter((r) => r.enabled);
   const [activeIdx, setActiveIdx] = useState(0);
@@ -61,6 +134,9 @@ export function ReelsSection({ reels }: { reels: AdminReel[] }) {
 
   if (count === 0) return null;
 
+  const currentFormat = activeReels[activeIdx]?.format ?? "portrait";
+  const isLandscape = currentFormat === "landscape";
+
   return (
     <div className="relative w-full select-none">
       <div
@@ -78,6 +154,9 @@ export function ReelsSection({ reels }: { reels: AdminReel[] }) {
             (activeIdx === count - 1 && i === 0);
           if (!isCenter && !isAdjacent) return null;
 
+          const fmt = reel.format ?? "portrait";
+          const aspectRatio = fmt === "landscape" ? "16/9" : "9/16";
+
           return (
             <div
               key={reel.id}
@@ -85,51 +164,22 @@ export function ReelsSection({ reels }: { reels: AdminReel[] }) {
               className={[
                 "relative flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer",
                 isCenter
-                  ? "w-[55%] sm:w-[38%] lg:w-[26%] opacity-100 scale-100 z-10 shadow-2xl"
-                  : "w-[22%] sm:w-[20%] lg:w-[15%] opacity-40 scale-95 z-0",
+                  ? isLandscape
+                    ? "w-[90%] sm:w-[70%] lg:w-[55%] opacity-100 scale-100 z-10 shadow-2xl"
+                    : "w-[55%] sm:w-[38%] lg:w-[26%] opacity-100 scale-100 z-10 shadow-2xl"
+                  : isLandscape
+                    ? "w-[30%] sm:w-[20%] lg:w-[15%] opacity-40 scale-95 z-0"
+                    : "w-[22%] sm:w-[20%] lg:w-[15%] opacity-40 scale-95 z-0",
               ].join(" ")}
-              style={{ aspectRatio: "9/16" }}
+              style={{ aspectRatio }}
             >
-              {(() => {
-                const ytId = reel.videoUrl ? getYoutubeId(reel.videoUrl) : null;
-                if (ytId) {
-                  return (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${ytId}?autoplay=${isCenter ? 1 : 0}&mute=1&loop=1&playlist=${ytId}&controls=0&playsinline=1`}
-                      className="h-full w-full"
-                      allow="autoplay; encrypted-media"
-                      allowFullScreen
-                    />
-                  );
-                }
-                if (reel.videoUrl) {
-                  return (
-                    <video
-                      ref={(el) => { videoRefs.current[i] = el; }}
-                      src={reel.videoUrl}
-                      className="h-full w-full object-cover"
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                    />
-                  );
-                }
-                return (
-                  <div className="h-full w-full bg-brand/10 flex flex-col items-center justify-center text-ink/30 gap-2">
-                    <span className="text-4xl">🎬</span>
-                    <span className="text-xs">No video</span>
-                  </div>
-                );
-              })()}
+              <ReelItem
+                reel={reel}
+                isCenter={isCenter}
+                videoRef={(el) => { videoRefs.current[i] = el; }}
+              />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-
-              {!isCenter && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white text-lg">▶</div>
-                </div>
-              )}
 
               {reel.title && isCenter && (
                 <div className="absolute bottom-0 left-0 right-0 p-4">
