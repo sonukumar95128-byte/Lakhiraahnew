@@ -115,6 +115,7 @@ export type SiteSettings = {
   };
   gstPercent: number;
   showGoldRateInBar: boolean;
+  upiId: string; // e.g. "shop@upi" for QR code payments
 };
 
 // v3: bumped after setting all stock to 50 (was 1 each from the CSV).
@@ -264,6 +265,7 @@ const seedSettings: SiteSettings = {
   paymentMethods: { upi: true, card: true, netbanking: true, cod: true },
   gstPercent: 3,
   showGoldRateInBar: true,
+  upiId: "",
 };
 
 type AdminContextValue = {

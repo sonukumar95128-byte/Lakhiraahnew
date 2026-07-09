@@ -1,26 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import QRCode from "qrcode";
 import { CheckoutStepper } from "@/components/CheckoutStepper";
 import { dummyProducts, formatRupee, priceToNumber } from "@/lib/dummy-images";
-import { buildWhatsAppOrderUrl } from "@/lib/whatsapp-order";
 import { useCart } from "@/lib/cart-store";
-
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Razorpay: new (options: Record<string, unknown>) => { open(): void };
-  }
-}
-
-const paymentMethods = [
-  { id: "upi", label: "UPI / GPay / PhonePe" },
-  { id: "card", label: "Credit / Debit card" },
-  { id: "netbanking", label: "Net banking · EMI" },
-  { id: "cod", label: "Cash on delivery" },
-];
+import { useAdmin } from "@/lib/admin-store";
 
 const countryCodes = ["+91", "+1", "+44", "+971", "+65"];
 const countries = ["India", "United States", "United Kingdom", "United Arab Emirates", "Singapore"];
@@ -50,12 +37,16 @@ const emptyAddress: Address = {
 };
 
 export default function CheckoutPage() {
-  const { items: cart } = useCart();
+  const { items: cart, clearCart } = useCart();
+  const { settings } = useAdmin();
   const [step, setStep] = useState(1);
   const [address, setAddress] = useState<Address>(emptyAddress);
-  const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0].id);
+  const [orderId, setOrderId] = useState<string | null>(null);
   const [placing, setPlacing] = useState(false);
   const [placed, setPlaced] = useState(false);
+  const [utrInput, setUtrInput] = useState("");
+  const [qrDataUrl, setQrDataUrl] = useState("");
+  const orderSavedRef = useRef(false);
 
   const cartItems = cart
     .map((line) => {
@@ -74,76 +65,56 @@ export default function CheckoutPage() {
   const addressValid =
     address.fullName && address.phone && address.line1 && address.city && address.state && address.pincode;
 
-  const handleOrderViaWhatsApp = () => {
-    const url = buildWhatsAppOrderUrl({
-      items: cartItems.map((i) => ({
-        name: i.product.name,
-        quantity: i.quantity,
-        lineTotal: priceToNumber(i.product.price) * i.quantity,
-      })),
-      subtotal,
-      discount,
-      total,
-      address,
-    });
-    window.open(url, "_blank", "noopener,noreferrer");
-    setPlaced(true);
-  };
-
-  const handleRazorpayPayment = async () => {
-    setPlacing(true);
+  // Save order to DB once when moving to step 2
+  const saveOrder = async () => {
+    if (orderSavedRef.current) return;
+    orderSavedRef.current = true;
     try {
-      // Load Razorpay checkout script dynamically
-      if (!window.Razorpay) {
-        await new Promise<void>((resolve, reject) => {
-          const script = document.createElement("script");
-          script.src = "https://checkout.razorpay.com/v1/checkout.js";
-          script.onload = () => resolve();
-          script.onerror = () => reject(new Error("Failed to load Razorpay"));
-          document.body.appendChild(script);
-        });
-      }
-
-      const res = await fetch("/api/razorpay/create-order", {
+      const res = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amountInPaise: total * 100, receipt: `order_${Date.now()}` }),
+        body: JSON.stringify({
+          customerName: address.fullName,
+          phone: `${address.countryCode} ${address.phone}`,
+          address: `${address.line1}${address.landmark ? `, near ${address.landmark}` : ""}, ${address.city}, ${address.state} - ${address.pincode}, ${address.country}`,
+          items: cartItems.map((i) => ({
+            name: i.product.name,
+            quantity: i.quantity,
+            price: priceToNumber(i.product.price),
+          })),
+          total,
+        }),
       });
-
-      if (!res.ok) throw new Error("create-order failed");
-      const { orderId, amount, currency, keyId } = await res.json();
-
-      const rzp = new window.Razorpay({
-        key: keyId,
-        amount,
-        currency,
-        order_id: orderId,
-        name: "Lakshiraah",
-        description: "Jewellery order",
-        image: "/logo.png",
-        prefill: {
-          name: address.fullName,
-          contact: `${address.countryCode}${address.phone}`,
-        },
-        theme: { color: "#d4a24c" },
-        handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
-          const verify = await fetch("/api/razorpay/verify", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(response),
-          });
-          if (verify.ok) {
-            setPlaced(true);
-          } else {
-            alert("Payment verification failed. Please contact support.");
-          }
-        },
-        modal: { ondismiss: () => setPlacing(false) },
-      });
-      rzp.open();
+      const data = await res.json();
+      if (data.orderId) setOrderId(data.orderId);
     } catch {
-      // Razorpay not configured — fall back to WhatsApp
-      handleOrderViaWhatsApp();
+      // silently ignore — order capture optional
+    }
+  };
+
+  // Generate UPI QR code when reaching payment step
+  useEffect(() => {
+    if (step !== 2 || !settings.upiId) return;
+    const upiUrl = `upi://pay?pa=${encodeURIComponent(settings.upiId)}&pn=${encodeURIComponent("Lakshiraah")}&am=${total}&cu=INR&tn=${encodeURIComponent(orderId ?? "Jewellery Order")}`;
+    QRCode.toDataURL(upiUrl, { width: 220, margin: 2 })
+      .then(setQrDataUrl)
+      .catch(() => {});
+  }, [step, settings.upiId, total, orderId]);
+
+  const handleConfirmPayment = async () => {
+    setPlacing(true);
+    try {
+      if (orderId) {
+        await fetch("/api/orders", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: orderId, status: "paid", utrNumber: utrInput }),
+        });
+      }
+      clearCart();
+      setPlaced(true);
+    } catch {
+      setPlaced(true);
     }
     setPlacing(false);
   };
@@ -151,13 +122,11 @@ export default function CheckoutPage() {
   if (placed) {
     return (
       <div className="mx-auto max-w-2xl px-4 sm:px-6 py-20 text-center">
-        <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full bg-gold-light/30 text-3xl text-gold">
-          ✓
-        </div>
+        <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full bg-gold-light/30 text-3xl text-gold">✓</div>
         <h1 className="font-heading italic text-3xl text-brand mb-2">Order placed!</h1>
-        <p className="text-ink/60 text-sm">
-          Thank you for your order. Our team will confirm your order and delivery within 24 hours.
-        </p>
+        <p className="text-ink/60 text-sm mb-1">Thank you, {address.fullName}!</p>
+        <p className="text-ink/60 text-sm">Our team will confirm your order and delivery within 24 hours.</p>
+        {orderId && <p className="mt-3 text-xs text-ink/40">Order ID: {orderId}</p>}
         <Link href="/jewellery" className="mt-6 inline-block rounded-full bg-brand px-6 py-3 text-sm font-medium text-gold-light hover:bg-brand-secondary transition-colors">
           Continue shopping
         </Link>
@@ -169,10 +138,7 @@ export default function CheckoutPage() {
     return (
       <div className="mx-auto max-w-2xl px-4 sm:px-6 py-20 text-center">
         <p className="text-ink/60 mb-4">Your bag is empty — add something before checking out.</p>
-        <Link
-          href="/jewellery"
-          className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-gold-light hover:bg-brand-secondary transition-colors"
-        >
+        <Link href="/jewellery" className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-gold-light hover:bg-brand-secondary transition-colors">
           Continue shopping
         </Link>
       </div>
@@ -192,6 +158,7 @@ export default function CheckoutPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 space-y-6">
+          {/* Step 1 — Address */}
           {step === 1 && (
             <div>
               <h2 className="text-sm font-medium text-brand mb-3">Shipping address</h2>
@@ -202,18 +169,13 @@ export default function CheckoutPage() {
                   onChange={(e) => setAddress({ ...address, fullName: e.target.value })}
                   className="rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
                 />
-
                 <div className="flex gap-2">
                   <select
                     value={address.countryCode}
                     onChange={(e) => setAddress({ ...address, countryCode: e.target.value })}
                     className="rounded-lg border border-beige px-2 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
                   >
-                    {countryCodes.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
+                    {countryCodes.map((c) => <option key={c} value={c}>{c}</option>)}
                   </select>
                   <input
                     placeholder="Mobile number"
@@ -222,21 +184,18 @@ export default function CheckoutPage() {
                     className="flex-1 rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
                   />
                 </div>
-
                 <input
                   placeholder="Address line (house no., street, area)"
                   value={address.line1}
                   onChange={(e) => setAddress({ ...address, line1: e.target.value })}
                   className="sm:col-span-2 rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
                 />
-
                 <input
                   placeholder="Nearby landmark (optional)"
                   value={address.landmark}
                   onChange={(e) => setAddress({ ...address, landmark: e.target.value })}
                   className="sm:col-span-2 rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
                 />
-
                 <input
                   placeholder="City"
                   value={address.city}
@@ -249,7 +208,6 @@ export default function CheckoutPage() {
                   onChange={(e) => setAddress({ ...address, state: e.target.value })}
                   className="rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
                 />
-
                 <input
                   placeholder="Pincode"
                   value={address.pincode}
@@ -261,46 +219,65 @@ export default function CheckoutPage() {
                   onChange={(e) => setAddress({ ...address, country: e.target.value })}
                   className="rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
                 >
-                  {countries.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
+                  {countries.map((c) => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
 
               <button
                 disabled={!addressValid}
-                onClick={() => setStep(2)}
+                onClick={async () => { await saveOrder(); setStep(2); }}
                 className="mt-5 rounded-full bg-brand px-6 py-3 text-sm font-medium text-gold-light hover:bg-brand-secondary disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
-                Continue to payment
+                Continue to payment →
               </button>
             </div>
           )}
 
+          {/* Step 2 — UPI Payment */}
           {step === 2 && (
             <div>
-              <h2 className="text-sm font-medium text-brand mb-3">Payment method</h2>
-              <div className="space-y-2">
-                {paymentMethods.map((m) => (
-                  <label
-                    key={m.id}
-                    className={
-                      "flex items-center gap-3 rounded-lg border px-4 py-3 text-sm cursor-pointer transition-colors " +
-                      (paymentMethod === m.id ? "border-gold bg-gold-light/10" : "border-beige hover:border-gold")
-                    }
+              <h2 className="text-sm font-medium text-brand mb-1">Pay via UPI</h2>
+              <p className="text-xs text-ink/50 mb-5">Scan the QR code or click the button to open your UPI app</p>
+
+              <div className="rounded-xl border border-beige bg-white p-6 flex flex-col items-center gap-4 max-w-sm">
+                {/* QR Code */}
+                {qrDataUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={qrDataUrl} alt="UPI QR Code" className="w-52 h-52 rounded-lg" />
+                ) : settings.upiId ? (
+                  <div className="w-52 h-52 rounded-lg bg-beige animate-pulse" />
+                ) : (
+                  <div className="w-52 h-52 rounded-lg bg-beige flex items-center justify-center text-xs text-ink/40 text-center p-4">
+                    UPI ID not set.<br />Admin → Settings → UPI Payment
+                  </div>
+                )}
+
+                <div className="text-center">
+                  <p className="text-2xl font-semibold text-brand">{formatRupee(total)}</p>
+                  <p className="text-xs text-ink/50 mt-0.5">{settings.upiId || "—"}</p>
+                </div>
+
+                {/* UPI deep link button — works on mobile */}
+                {settings.upiId && (
+                  <a
+                    href={`upi://pay?pa=${encodeURIComponent(settings.upiId)}&pn=Lakshiraah&am=${total}&cu=INR&tn=${encodeURIComponent(orderId ?? "Jewellery Order")}`}
+                    className="w-full rounded-full bg-[#5f259f] text-white text-sm font-medium py-3 text-center hover:bg-[#4a1a80] transition-colors"
                   >
-                    <input
-                      type="radio"
-                      name="payment"
-                      checked={paymentMethod === m.id}
-                      onChange={() => setPaymentMethod(m.id)}
-                      className="accent-gold"
-                    />
-                    {m.label}
-                  </label>
-                ))}
+                    📱 Open UPI App to Pay
+                  </a>
+                )}
+              </div>
+
+              {/* UTR / reference input */}
+              <div className="mt-6 max-w-sm">
+                <label className="block text-xs text-ink/60 mb-1">Enter payment reference / UTR number <span className="text-ink/30">(optional)</span></label>
+                <input
+                  value={utrInput}
+                  onChange={(e) => setUtrInput(e.target.value)}
+                  placeholder="e.g. 123456789012"
+                  className="w-full rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
+                />
+                <p className="text-xs text-ink/40 mt-1">Found in your UPI app after payment</p>
               </div>
 
               <div className="mt-5 flex gap-3">
@@ -308,89 +285,44 @@ export default function CheckoutPage() {
                   onClick={() => setStep(1)}
                   className="rounded-full border border-beige px-6 py-3 text-sm text-ink/70 hover:border-gold transition-colors"
                 >
-                  Back
+                  ← Back
                 </button>
                 <button
-                  onClick={() => setStep(3)}
-                  className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-gold-light hover:bg-brand-secondary transition-colors"
+                  onClick={handleConfirmPayment}
+                  disabled={placing}
+                  className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-gold-light hover:bg-brand-secondary disabled:opacity-60 transition-colors"
                 >
-                  Review order
+                  {placing ? "Confirming…" : "I've paid — Confirm order ✓"}
                 </button>
               </div>
-            </div>
-          )}
-
-          {step === 3 && (
-            <div>
-              <h2 className="text-sm font-medium text-brand mb-3">Review your order</h2>
-
-              <div className="rounded-lg border border-beige p-4 mb-4">
-                <p className="text-xs text-ink/50 mb-1">Shipping to</p>
-                <p className="text-sm text-ink/80">
-                  {address.fullName} · {address.countryCode} {address.phone}
-                </p>
-                <p className="text-sm text-ink/80">
-                  {address.line1}
-                  {address.landmark && `, near ${address.landmark}`}
-                </p>
-                <p className="text-sm text-ink/80">
-                  {address.city}, {address.state} — {address.pincode}, {address.country}
-                </p>
-                <button onClick={() => setStep(1)} className="mt-2 text-xs text-gold underline hover:text-brand">
-                  Edit address
-                </button>
-              </div>
-
-              <div className="rounded-lg border border-beige p-4 mb-4">
-                <p className="text-xs text-ink/50 mb-1">Payment method</p>
-                <p className="text-sm text-ink/80">{paymentMethods.find((m) => m.id === paymentMethod)?.label}</p>
-                <button onClick={() => setStep(2)} className="mt-2 text-xs text-gold underline hover:text-brand">
-                  Change payment method
-                </button>
-              </div>
-
-              <div className="space-y-3">
-                {cartItems.map((item) => (
-                  <div key={item.product.slug} className="flex items-center gap-3">
-                    <div className="relative h-14 w-14 shrink-0 rounded-lg overflow-hidden bg-beige border border-beige">
-                      <Image src={item.product.image} alt={item.product.name} fill sizes="56px" className="object-cover" />
-                    </div>
-                    <p className="flex-1 text-sm text-ink line-clamp-1">{item.product.name}</p>
-                    <p className="text-sm font-medium text-brand">
-                      {formatRupee(priceToNumber(item.product.price) * item.quantity)}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={handleOrderViaWhatsApp}
-                disabled={placing}
-                className="mt-1 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-medium text-white hover:bg-[#1ebe5b] disabled:opacity-60 transition-colors"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.1-.2.1-.3.1-.6 0-1.6-.7-2.6-1.4-3.7-3.1-.3-.4 0-.4.2-.7.1-.2.2-.3.3-.5.1-.2 0-.3 0-.4-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.3-.9 1-.9 2.3 0 1.3 1 2.6 1.1 2.8.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.1-.5-.2z" />
-                  <path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.7 3.1 1.1 4.8 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z" />
-                </svg>
-                {placing ? "Opening WhatsApp…" : `Order via WhatsApp · ${formatRupee(total)}`}
-              </button>
-              <p className="mt-2 text-xs text-ink/40 text-center">By placing this order you agree to our terms.</p>
+              <p className="mt-3 text-xs text-ink/40">
+                Your order will be verified by our team within 24 hours after payment confirmation.
+              </p>
             </div>
           )}
         </div>
 
         {/* Order summary */}
         <div className="rounded-xl border border-beige p-5 h-fit">
-          <p className="text-sm font-medium text-brand mb-3">{cartItems.length} items</p>
-          <div className="flex gap-2 mb-4">
+          <p className="text-sm font-medium text-brand mb-3">{cartItems.length} item{cartItems.length > 1 ? "s" : ""}</p>
+          <div className="space-y-3 mb-4">
             {cartItems.map((item) => (
-              <div key={item.product.slug} className="relative h-14 w-14 rounded-lg overflow-hidden bg-beige border border-beige">
-                <Image src={item.product.image} alt={item.product.name} fill sizes="56px" className="object-cover" />
+              <div key={item.product.slug} className="flex items-center gap-3">
+                <div className="relative h-12 w-12 shrink-0 rounded-lg overflow-hidden bg-beige border border-beige">
+                  <Image src={item.product.image} alt={item.product.name} fill sizes="48px" className="object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs text-ink line-clamp-1">{item.product.name}</p>
+                  <p className="text-xs text-ink/50">Qty: {item.quantity}</p>
+                </div>
+                <p className="text-sm font-medium text-brand shrink-0">
+                  {formatRupee(priceToNumber(item.product.price) * item.quantity)}
+                </p>
               </div>
             ))}
           </div>
 
-          <dl className="space-y-2 text-sm">
+          <dl className="space-y-2 text-sm border-t border-beige pt-3">
             <div className="flex justify-between">
               <dt className="text-ink/60">Subtotal</dt>
               <dd className="text-ink/80">{formatRupee(subtotal)}</dd>
@@ -399,11 +331,11 @@ export default function CheckoutPage() {
               <dt>Discount</dt>
               <dd>− {formatRupee(discount)}</dd>
             </div>
+            <div className="flex justify-between font-semibold text-brand border-t border-beige pt-2 mt-2">
+              <dt>Total</dt>
+              <dd className="text-lg">{formatRupee(total)}</dd>
+            </div>
           </dl>
-          <div className="border-t border-beige mt-3 pt-3 flex justify-between">
-            <span className="font-medium text-brand">Total</span>
-            <span className="font-semibold text-brand text-lg">{formatRupee(total)}</span>
-          </div>
         </div>
       </div>
     </div>
