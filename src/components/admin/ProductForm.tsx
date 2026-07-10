@@ -19,6 +19,14 @@ export function ProductForm({ initial }: ProductFormProps) {
   const [price, setPrice] = useState(initial?.price ?? "");
   const [stock, setStock] = useState(initial?.stock ?? 10);
   const [description, setDescription] = useState(initial?.description ?? "");
+
+  // Filter attributes
+  const [metalType, setMetalType] = useState(initial?.attributes?.metalType ?? "");
+  const [karat, setKarat] = useState(initial?.attributes?.karat ?? "");
+  const [diamondType, setDiamondType] = useState(initial?.attributes?.diamondType ?? "");
+  const [diamondColour, setDiamondColour] = useState(initial?.attributes?.diamondColour ?? "");
+  const [diamondClarity, setDiamondClarity] = useState(initial?.attributes?.diamondClarity ?? "");
+  const [occasion, setOccasion] = useState(initial?.attributes?.occasion ?? "");
   const [gallery, setGallery] = useState<string[]>(
     initial?.gallery?.length ? initial.gallery : initial?.image ? [initial.image] : []
   );
@@ -87,7 +95,15 @@ export function ProductForm({ initial }: ProductFormProps) {
       rating: initial?.rating ?? 4.5,
       reviewCount: initial?.reviewCount ?? 0,
       originalPrice: initial?.originalPrice,
-      attributes: initial?.attributes,
+      attributes: {
+        ...(initial?.attributes ?? {}),
+        ...(metalType && { metalType }),
+        ...(karat && { karat }),
+        ...(diamondType && { diamondType }),
+        ...(diamondColour && { diamondColour }),
+        ...(diamondClarity && { diamondClarity }),
+        ...(occasion && { occasion }),
+      },
     };
 
     if (isEdit && initial) {
@@ -225,6 +241,79 @@ export function ProductForm({ initial }: ProductFormProps) {
           rows={4}
           className="w-full rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
         />
+      </div>
+
+      {/* Filter attributes */}
+      <div className="rounded-xl border border-beige bg-beige/20 p-4 space-y-4">
+        <p className="text-sm font-medium text-brand">Filter attributes</p>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-xs text-ink/50 mb-1">Metal type</label>
+            <select value={metalType} onChange={(e) => setMetalType(e.target.value)}
+              className="w-full rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold bg-white">
+              <option value="">— select —</option>
+              {["Yellow gold", "Rose gold", "White gold", "Platinum", "Silver"].map((m) => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs text-ink/50 mb-1">Gold karat</label>
+            <select value={karat} onChange={(e) => setKarat(e.target.value)}
+              className="w-full rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold bg-white">
+              <option value="">— select —</option>
+              {["14k", "18k", "22k"].map((k) => (
+                <option key={k} value={k}>{k}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs text-ink/50 mb-1">Diamond type</label>
+            <select value={diamondType} onChange={(e) => setDiamondType(e.target.value)}
+              className="w-full rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold bg-white">
+              <option value="">— select —</option>
+              {["Natural", "Lab-grown", "Solitaire", "No diamond"].map((d) => (
+                <option key={d} value={d}>{d}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs text-ink/50 mb-1">Diamond colour</label>
+            <select value={diamondColour} onChange={(e) => setDiamondColour(e.target.value)}
+              className="w-full rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold bg-white">
+              <option value="">— select —</option>
+              {["D-F", "G-H", "I-J"].map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs text-ink/50 mb-1">Diamond clarity</label>
+            <select value={diamondClarity} onChange={(e) => setDiamondClarity(e.target.value)}
+              className="w-full rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold bg-white">
+              <option value="">— select —</option>
+              {["VVS", "VS", "SI"].map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs text-ink/50 mb-1">Occasion</label>
+            <select value={occasion} onChange={(e) => setOccasion(e.target.value)}
+              className="w-full rounded-lg border border-beige px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gold bg-white">
+              <option value="">— select —</option>
+              {["Bridal", "Everyday Light", "Gifting"].map((o) => (
+                <option key={o} value={o}>{o}</option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
 
       <div className="flex gap-3">
