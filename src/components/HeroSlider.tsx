@@ -21,11 +21,11 @@ function GlassArrow({
       }}
       aria-label={direction === "left" ? "Previous slide" : "Next slide"}
       className={
-        "absolute top-1/2 -translate-y-1/2 z-20 h-11 w-11 rounded-full " +
+        "hidden sm:flex absolute top-1/2 -translate-y-1/2 z-20 h-11 w-11 rounded-full " +
         "bg-white/20 backdrop-blur-md border border-white/30 text-white text-xl " +
-        "flex items-center justify-center hover:bg-white/35 active:scale-95 " +
+        "items-center justify-center hover:bg-white/35 active:scale-95 " +
         "transition-all duration-200 shadow-lg " +
-        (direction === "left" ? "left-4 sm:left-6" : "right-4 sm:right-6")
+        (direction === "left" ? "left-6" : "right-6")
       }
     >
       {direction === "left" ? "‹" : "›"}
