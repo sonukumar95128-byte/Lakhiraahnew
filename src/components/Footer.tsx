@@ -19,7 +19,7 @@ const companyLinks = [
 const socialLinks = [
   {
     label: "Instagram",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/lakshiraah.diamond/",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
         <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -30,7 +30,7 @@ const socialLinks = [
   },
   {
     label: "Facebook",
-    href: "https://facebook.com",
+    href: "https://www.facebook.com/profile.php?id=61588300111069",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
         <path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2H15l-.5 3H11.5v6" strokeLinecap="round" strokeLinejoin="round" />
@@ -40,7 +40,7 @@ const socialLinks = [
   },
   {
     label: "WhatsApp",
-    href: "https://wa.me/",
+    href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_BUSINESS_NUMBER ?? ""}`,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
         <path d="M7 17l-3 1 1-3a7.5 7.5 0 1 1 2 2z" strokeLinecap="round" strokeLinejoin="round" />
@@ -55,13 +55,16 @@ export function Footer() {
     <footer className="mt-16 bg-brand text-gold-light/80">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <Image
-            src="/brand/lakshiraah-logo.png"
-            alt="Lakshiraah"
-            width={220}
-            height={60}
-            className="h-16 w-auto object-contain mb-3"
-          />
+          <div className="flex items-center gap-2 mb-3">
+            <Image
+              src="/brand/lakshiraah-logo.png"
+              alt="Lakshiraah"
+              width={220}
+              height={60}
+              className="h-16 w-auto object-contain"
+            />
+            <span className="font-heading text-2xl font-bold text-gold">Lakshiraah</span>
+          </div>
           <p className="text-xs text-gold-light/60 leading-relaxed">
             Luxurious concepts in fine jewellery — handcrafted, hallmarked, and certified.
           </p>

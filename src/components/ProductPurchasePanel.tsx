@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   colorOptions,
+  defaultPurityForKarat,
   formatRupee,
   getCoupons,
   getPriceBreakup,
   getSizeOptions,
+  karatNumber,
   purityOptions,
   type Category,
 } from "@/lib/dummy-images";
@@ -23,6 +25,7 @@ type ProductPurchasePanelProps = {
   rating: number;
   reviewCount: number;
   category: Category;
+  attributes?: Record<string, string>;
 };
 
 function discountPercent(price: string, originalPrice?: string): number | null {
@@ -41,13 +44,15 @@ export function ProductPurchasePanel({
   rating,
   reviewCount,
   category,
+  attributes,
 }: ProductPurchasePanelProps) {
   const { items, addItem } = useCart();
   const inBag = items.some((i) => i.slug === slug);
   const { isWishlisted, toggleWishlist } = useWishlist();
   const wishlisted = isWishlisted(slug);
   const [color, setColor] = useState(colorOptions[2].label);
-  const [purity, setPurity] = useState(purityOptions[0]);
+  const baseKarat = karatNumber(attributes?.["Gold Karat"]);
+  const [purity, setPurity] = useState(defaultPurityForKarat(baseKarat));
   const sizeOptions = getSizeOptions(category);
   const [size, setSize] = useState(sizeOptions[0]);
   const [pincode, setPincode] = useState("");
@@ -55,12 +60,33 @@ export function ProductPurchasePanel({
   const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
 
-  const discount = discountPercent(price, originalPrice);
-  const breakup = getPriceBreakup(price);
-  const coupons = getCoupons(price);
+  const baseDiscount = discountPercent(price, originalPrice);
+  const breakup = getPriceBreakup(price, karatNumber(purity), baseKarat);
+  const coupons = getCoupons(formatRupee(breakup.total));
+  // Display price/discount follow the selected purity — the gold portion (and therefore the
+  // total) scales with karat, so switching purity now actually changes what's shown.
+  const displayPrice = formatRupee(breakup.total);
+  const displayOriginalPrice =
+    baseDiscount != null ? formatRupee(Math.round(breakup.total / (1 - baseDiscount / 100))) : undefined;
+  const discount = baseDiscount;
+
+  const labCertificate = attributes?.["Lab Certificate"];
 
   return (
     <div>
+      {labCertificate && (
+        <div className="mb-4 flex items-start gap-3 rounded-xl border border-gold/40 bg-gold-light/20 px-4 py-3">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-brand text-base">
+            ✓
+          </span>
+          <p className="text-sm text-brand">
+            <span className="font-semibold">{labCertificate} Certified Diamonds.</span>{" "}
+            Every diamond in this piece is lab-certified by {labCertificate}, so you can shop with complete
+            confidence in its authenticity and quality.
+          </p>
+        </div>
+      )}
+
       <div className="flex items-center gap-1 text-sm text-gold mb-2">
         {"★".repeat(Math.round(rating))}
         {"☆".repeat(5 - Math.round(rating))}
@@ -68,8 +94,8 @@ export function ProductPurchasePanel({
       </div>
 
       <div className="flex items-baseline gap-2 flex-wrap">
-        <span className="font-sans text-3xl font-semibold text-brand">{price}</span>
-        {originalPrice && <span className="text-ink/40 line-through text-lg">{originalPrice}</span>}
+        <span className="font-sans text-3xl font-semibold text-brand">{displayPrice}</span>
+        {displayOriginalPrice && <span className="text-ink/40 line-through text-lg">{displayOriginalPrice}</span>}
         {discount && (
           <span className="rounded bg-gold-light/40 px-2 py-0.5 text-xs font-medium text-brand">{discount}% off</span>
         )}
@@ -223,7 +249,7 @@ export function ProductPurchasePanel({
       {/* WhatsApp Buy Now */}
       {process.env.NEXT_PUBLIC_WHATSAPP_BUSINESS_NUMBER && (
         <a
-          href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_BUSINESS_NUMBER}?text=${encodeURIComponent(`Hi Lakshiraah, I'm interested in buying:\n\n*${name}*\nPrice: ${price}\n\nPlease help me with this order.`)}`}
+          href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_BUSINESS_NUMBER}?text=${encodeURIComponent(`Hi Lakshiraah, I'm interested in buying:\n\n*${name}*\nPurity: ${purity}\nPrice: ${displayPrice}\n\nPlease help me with this order.`)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-medium text-white hover:bg-[#1ebe5d] transition-colors"
@@ -264,7 +290,7 @@ export function ProductPurchasePanel({
 
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
         {[
-          { icon: "↺", label: "15-day returns", sub: "Easy exchange" },
+          { icon: "↺", label: "7-day returns", sub: "Easy exchange" },
           { icon: "✓", label: "Hallmarked", sub: "BIS certified" },
           { icon: "♾", label: "Lifetime", sub: "Free maintenance" },
         ].map((t) => (

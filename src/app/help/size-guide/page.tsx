@@ -11,6 +11,12 @@ export default function SizeGuidePage() {
         and measure the length in millimetres. Compare against a standard ring-size chart, or visit any local
         jeweller for an accurate measurement.
       </p>
+      <p>
+        <a href="/downloads/lakshiraah-ring-size-chart.pdf" download className="text-gold underline hover:text-brand">
+          Download the printable ring size chart (PDF)
+        </a>{" "}
+        — print it at 100% / actual size, then match a ring you own against the circles to find your size.
+      </p>
 
       <h2>Bracelet & bangle sizing</h2>
       <p>

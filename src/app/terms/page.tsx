@@ -30,7 +30,7 @@ export default function TermsPage() {
 
       <h2>Returns & exchanges</h2>
       <p>
-        See our <a href="/help/shipping-returns">Shipping &amp; Returns</a> page for details on our 15-day return
+        See our <a href="/help/shipping-returns">Shipping &amp; Returns</a> page for details on our 7-day return
         and exchange policy.
       </p>
 

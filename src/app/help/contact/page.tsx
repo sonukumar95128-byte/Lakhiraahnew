@@ -21,11 +21,11 @@ export default function ContactPage() {
       <div className="rounded-xl border border-beige bg-white p-5 mb-8 space-y-2 text-sm">
         <p>
           <span className="text-ink/50">Phone / WhatsApp:</span>{" "}
-          <span className="text-brand font-medium">+91 12345 67890</span>
+          <span className="text-brand font-medium">+91 70775 96064</span>
         </p>
         <p>
           <span className="text-ink/50">Email:</span>{" "}
-          <span className="text-brand font-medium">hello@lakshiraah.in</span>
+          <span className="text-brand font-medium">diamondjewlery111@gmail.com</span>
         </p>
         <p>
           <span className="text-ink/50">Hours:</span> Mon-Sat, 10am-7pm IST

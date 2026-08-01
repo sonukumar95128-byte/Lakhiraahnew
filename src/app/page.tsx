@@ -73,7 +73,7 @@ const defaultTestimonials: AdminTestimonial[] = dummyTestimonials.map((t, i) => 
 const defaultTrustBadges: TrustBadge[] = [
   { id: "badge-1", icon: "✓", label: "Hallmarked", sub: "BIS certified", enabled: true },
   { id: "badge-2", icon: "🚚", label: "Free shipping", sub: "Over ₹999", enabled: true },
-  { id: "badge-3", icon: "↺", label: "15-day returns", sub: "Easy & free", enabled: true },
+  { id: "badge-3", icon: "↺", label: "7-day returns", sub: "Easy & free", enabled: true },
   { id: "badge-4", icon: "♾", label: "Lifetime exchange", sub: "Buyback support", enabled: true },
 ];
 

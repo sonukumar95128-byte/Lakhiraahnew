@@ -22,7 +22,7 @@ export default function AboutPage() {
         </p>
         <p>
           We believe jewellery should be as personal as the moments it&apos;s worn for. That&apos;s why we offer
-          lifetime maintenance, a 15-day exchange window, and a team that&apos;s always happy to help you find the
+          lifetime maintenance, a 7-day exchange window, and a team that&apos;s always happy to help you find the
           right piece — whether that&apos;s for a wedding, a gift, or just because.
         </p>
         <p>

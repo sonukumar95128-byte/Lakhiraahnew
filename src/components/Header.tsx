@@ -93,7 +93,7 @@ export function Header() {
       }
     >
       <div className="mx-auto max-w-7xl grid grid-cols-[auto_1fr_auto] items-center gap-6 px-4 sm:px-6 py-3">
-        <Link href="/" className="shrink-0">
+        <Link href="/" className="shrink-0 flex items-center gap-2">
           <Image
             src="/brand/lakshiraah-logo.png"
             alt="Lakshiraah — Luxurious Concepts"
@@ -102,6 +102,7 @@ export function Header() {
             className="h-10 w-auto object-contain"
             priority
           />
+          <span className="font-heading text-2xl font-bold text-gold hidden sm:inline">Lakshiraah</span>
         </Link>
 
         <nav

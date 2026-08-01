@@ -34,7 +34,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 45,
-    "description": "14KT Yellow Gold | Gold: 1.96g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—6.5INCH",
+    "description": "14KT Yellow Gold | Gold: 1.96g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -60,7 +60,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 45,
-    "description": "14KT Rose Gold | Gold: 1.25g | Diamonds: 5pcs 0.1ct (H-I, VS-SI) | IGI | 4MMÃ—6INCH",
+    "description": "14KT Rose Gold | Gold: 1.25g | Diamonds: 5pcs 0.1ct (H-I, VS-SI) | IGI | 4MM×6INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -86,7 +86,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 45,
-    "description": "14KT Rose Gold | Gold: 1.41g | Diamonds: 5pcs 0.06ct (H-I, VS-SI) | IGI | 4MMÃ—6.25INCH",
+    "description": "14KT Rose Gold | Gold: 1.41g | Diamonds: 5pcs 0.06ct (H-I, VS-SI) | IGI | 4MM×6.25INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -112,7 +112,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 45,
-    "description": "14KT Rose Gold | Gold: 1.98g | Diamonds: 4pcs 0.08ct (H-I, VS-SI) | IGI | 8MMÃ—6.5INCH",
+    "description": "14KT Rose Gold | Gold: 1.98g | Diamonds: 4pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×6.5INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -138,7 +138,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 45,
-    "description": "14KT Rose Gold | Gold: 1.85g | Diamonds: 25pcs 0.1ct (H-I, VS-SI) | IGI | 10MMÃ—6.25INCH",
+    "description": "14KT Rose Gold | Gold: 1.85g | Diamonds: 25pcs 0.1ct (H-I, VS-SI) | IGI | 10MM×6.25INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -164,7 +164,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 45,
-    "description": "14KT Yellow Gold | Gold: 1.57g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—6.5INCH",
+    "description": "14KT Yellow Gold | Gold: 1.57g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -190,7 +190,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 45,
-    "description": "14KT Rose Gold | Gold: 1.32g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 5MMÃ—6.10INCH",
+    "description": "14KT Rose Gold | Gold: 1.32g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 5MM×6.10INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -216,7 +216,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 45,
-    "description": "14KT Yellow Gold | Gold: 1.85g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—6.5INCH",
+    "description": "14KT Yellow Gold | Gold: 1.85g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -242,7 +242,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 46,
-    "description": "14KT Rose Gold | Gold: 1.32g | Diamonds: 5pcs 0.08ct (H-I, VS-SI) | IGI | 6MMÃ—6.25INCH",
+    "description": "14KT Rose Gold | Gold: 1.32g | Diamonds: 5pcs 0.08ct (H-I, VS-SI) | IGI | 6MM×6.25INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -268,7 +268,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 46,
-    "description": "14KT Rose Gold | Gold: 1.25g | Diamonds: 5pcs 0.09ct (H-I, VS-SI) | IGI | 5MMÃ—6.25INCH",
+    "description": "14KT Rose Gold | Gold: 1.25g | Diamonds: 5pcs 0.09ct (H-I, VS-SI) | IGI | 5MM×6.25INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -294,7 +294,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 46,
-    "description": "14KT Rose Gold | Gold: 1.4g | Diamonds: 5pcs 0.08ct (H-I, VS-SI) | IGI | 5MMÃ—6INCH",
+    "description": "14KT Rose Gold | Gold: 1.4g | Diamonds: 5pcs 0.08ct (H-I, VS-SI) | IGI | 5MM×6INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -320,7 +320,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 46,
-    "description": "14KT Yellow Gold | Gold: 2.31g | Diamonds: 20pcs 0.1ct (H-I, VS-SI) | IGI | 10MMÃ—6.25INCH",
+    "description": "14KT Yellow Gold | Gold: 2.31g | Diamonds: 20pcs 0.1ct (H-I, VS-SI) | IGI | 10MM×6.25INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -346,7 +346,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 47,
-    "description": "14KT Yellow Gold | Gold: 1.76g | Diamonds: 4pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—6.5INCH",
+    "description": "14KT Yellow Gold | Gold: 1.76g | Diamonds: 4pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -372,7 +372,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 47,
-    "description": "14KT Rose Gold | Gold: 2.11g | Diamonds: 4pcs 0.04ct (H-I, VS-SI) | IGI | 10MMÃ—6.5INCH",
+    "description": "14KT Rose Gold | Gold: 2.11g | Diamonds: 4pcs 0.04ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -398,7 +398,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 47,
-    "description": "14KT Rose Gold | Gold: 3.08g | Diamonds: 30pcs 0.02ct (H-I, VS-SI) | IGI | 20MMÃ—25MM",
+    "description": "14KT Rose Gold | Gold: 3.08g | Diamonds: 30pcs 0.02ct (H-I, VS-SI) | IGI | 20MM×25MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -424,7 +424,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.3,
     "reviewCount": 21,
-    "description": "14KT Rose Gold | Gold: 0.93g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.93g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -450,7 +450,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Yellow Gold | Gold: 3.23g | Diamonds: 15pcs 0.25ct (E-F, VVS-VS) | DGLA | 20MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 3.23g | Diamonds: 15pcs 0.25ct (E-F, VVS-VS) | DGLA | 20MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -476,7 +476,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Rose Gold | Gold: 0.87g | Diamonds: 7pcs 0.05ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.87g | Diamonds: 7pcs 0.05ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -502,7 +502,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 7pcs 0.04ct (H-I, VS-SI) | IGI | 15MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 7pcs 0.04ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -528,7 +528,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Rose Gold | Gold: 0.94g | Diamonds: 12pcs 0.08ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.94g | Diamonds: 12pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -554,7 +554,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Rose Gold | Gold: 0.93g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 5MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.93g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 5MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -580,7 +580,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Rose Gold | Gold: 1.04g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 1.04g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -606,7 +606,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 3pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—3MM",
+    "description": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 3pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×3MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -632,7 +632,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Rose Gold | Gold: 0.99g | Diamonds: 15pcs 0.05ct (H-I, VS-SI) | IGI | 10MMÃ—18MM",
+    "description": "14KT Rose Gold | Gold: 0.99g | Diamonds: 15pcs 0.05ct (H-I, VS-SI) | IGI | 10MM×18MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -658,7 +658,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 1.02g | Diamonds: 4pcs 0.07ct (H-I, VS-SI) | IGI | 4MMÃ—6MM",
+    "description": "14KT Rose Gold | Gold: 1.02g | Diamonds: 4pcs 0.07ct (H-I, VS-SI) | IGI | 4MM×6MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -684,7 +684,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 20MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -710,7 +710,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 0.85g | Diamonds: 8pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.85g | Diamonds: 8pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -736,7 +736,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 1.08g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 5MMÃ—5MM",
+    "description": "14KT Rose Gold | Gold: 1.08g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 5MM×5MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -762,7 +762,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 1.18g | Diamonds: 14pcs 0.05ct (H-I, VS-SI) | IGI | 10MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.18g | Diamonds: 14pcs 0.05ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -787,7 +787,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 52,
-    "description": "14KT Rose Gold | Gold: 1.1g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 5MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.1g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 5MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -813,7 +813,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 52,
-    "description": "14KT Rose Gold | Gold: 1.06g | Diamonds: 7pcs 0.08ct (H-I, VS-SI) | IGI | 8MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.06g | Diamonds: 7pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -839,7 +839,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 52,
-    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 16MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 16MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -865,7 +865,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 52,
-    "description": "14KT Rose Gold | Gold: 0.77g | Diamonds: 1pcs 0.06ct (H-I, SI) | IGI | 6MMÃ—6MM",
+    "description": "14KT Rose Gold | Gold: 0.77g | Diamonds: 1pcs 0.06ct (H-I, SI) | IGI | 6MM×6MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -891,7 +891,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 53,
-    "description": "14KT Rose Gold | Gold: 0.81g | Diamonds: 6pcs 0.06ct (H-I, VS-SI) | IGI | 5MMÃ—4MM",
+    "description": "14KT Rose Gold | Gold: 0.81g | Diamonds: 6pcs 0.06ct (H-I, VS-SI) | IGI | 5MM×4MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -916,7 +916,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 53,
-    "description": "14KT Rose Gold | Gold: 1.2g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 9MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.2g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 9MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -942,7 +942,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 53,
-    "description": "14KT Rose Gold | Gold: 0.89g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 12MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.89g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 12MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -968,7 +968,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 57,
-    "description": "14KT Rose Gold | Gold: 1.3g | Diamonds: 23pcs 0.1ct (H-I, VS-SI) | IGI | 10MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.3g | Diamonds: 23pcs 0.1ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -994,7 +994,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 58,
-    "description": "14KT Yellow Gold | Gold: 0.95g | Diamonds: 9pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—15MM",
+    "description": "14KT Yellow Gold | Gold: 0.95g | Diamonds: 9pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1020,7 +1020,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 58,
-    "description": "14KT Yellow Gold | Gold: 1.02g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—5MM",
+    "description": "14KT Yellow Gold | Gold: 1.02g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×5MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1046,7 +1046,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 58,
-    "description": "14KT Yellow Gold | Gold: 0.89g | Diamonds: 8pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 0.89g | Diamonds: 8pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1072,7 +1072,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 58,
-    "description": "14KT Yellow Gold | Gold: 0.79g | Diamonds: 17pcs 0.06ct (H-I, VS-SI) | IGI | 4MMÃ—4MM",
+    "description": "14KT Yellow Gold | Gold: 0.79g | Diamonds: 17pcs 0.06ct (H-I, VS-SI) | IGI | 4MM×4MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1098,7 +1098,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 60,
-    "description": "14KT Rose Gold | Gold: 1.09g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.09g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1124,7 +1124,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 60,
-    "description": "14KT Yellow Gold | Gold: 0.83g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 3MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 0.83g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 3MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1150,7 +1150,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 60,
-    "description": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 6MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 6MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1176,7 +1176,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 5,
-    "description": "14KT Rose Gold | Gold: 0.89g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—6MM",
+    "description": "14KT Rose Gold | Gold: 0.89g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×6MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1202,7 +1202,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 5,
-    "description": "14KT Yellow Gold | Gold: 0.94g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 12MMÃ—15MM",
+    "description": "14KT Yellow Gold | Gold: 0.94g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 12MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1228,7 +1228,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 5,
-    "description": "14KT Rose Gold | Gold: 0.77g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.77g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1254,7 +1254,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 5,
-    "description": "14KT Yellow Gold | Gold: 0.88g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 12MMÃ—15MM",
+    "description": "14KT Yellow Gold | Gold: 0.88g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 12MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1280,7 +1280,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 5,
-    "description": "14KT Rose Gold | Gold: 1.12g | Diamonds: 6pcs 0.09ct (H-I, VS-SI) | IGI | 10MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 1.12g | Diamonds: 6pcs 0.09ct (H-I, VS-SI) | IGI | 10MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1306,7 +1306,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 6,
-    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—5MM",
+    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×5MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1332,7 +1332,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 6,
-    "description": "14KT Rose Gold | Gold: 0.9g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 7MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.9g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 7MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1358,7 +1358,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Rose Gold | Gold: 0.79g | Diamonds: 9pcs 0.07ct (H-I, VS-SI) | IGI | 6MMÃ—6MM",
+    "description": "14KT Rose Gold | Gold: 0.79g | Diamonds: 9pcs 0.07ct (H-I, VS-SI) | IGI | 6MM×6MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1384,7 +1384,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Rose Gold | Gold: 0.76g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 12MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.76g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 12MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1410,7 +1410,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Rose Gold | Gold: 1.11g | Diamonds: 12pcs 0.05ct (H-I, VS-SI) | IGI | 10MMÃ—12MM",
+    "description": "14KT Rose Gold | Gold: 1.11g | Diamonds: 12pcs 0.05ct (H-I, VS-SI) | IGI | 10MM×12MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1436,7 +1436,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 10,
-    "description": "14KT Rose Gold | Gold: 0.86g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.86g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1462,7 +1462,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Rose Gold | Gold: 0.92g | Diamonds: 9pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.92g | Diamonds: 9pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1488,7 +1488,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 0.79g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.79g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1514,7 +1514,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 53,
-    "description": "14KT Rose Gold | Gold: 0.93g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.93g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1540,7 +1540,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 53,
-    "description": "14KT Rose Gold | Gold: 0.97g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.97g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1566,7 +1566,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 56,
-    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1592,7 +1592,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Yellow Gold | Gold: 2.55g | Diamonds: 34pcs 0.11ct (H-I, VS-SI) | IGI | 25MMÃ—18MM",
+    "description": "14KT Yellow Gold | Gold: 2.55g | Diamonds: 34pcs 0.11ct (H-I, VS-SI) | IGI | 25MM×18MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1618,7 +1618,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Rose Gold | Gold: 2.7g | Diamonds: 5pcs 0.11ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 2.7g | Diamonds: 5pcs 0.11ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1644,7 +1644,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Yellow Gold | Gold: 2.74g | Diamonds: 5pcs 0.07ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 2.74g | Diamonds: 5pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1670,7 +1670,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Rose Gold | Gold: 1.94g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.94g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1696,7 +1696,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Rose Gold | Gold: 1.9g | Diamonds: 21pcs 0.13ct (H-I, VS-SI) | IGI | 20MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 1.9g | Diamonds: 21pcs 0.13ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1722,7 +1722,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 8,
-    "description": "14KT Yellow Gold | Gold: 2.3g | Diamonds: 5pcs 0.11ct (H-I, VS-SI) | IGI | 9MMÃ—12MM",
+    "description": "14KT Yellow Gold | Gold: 2.3g | Diamonds: 5pcs 0.11ct (H-I, VS-SI) | IGI | 9MM×12MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -1748,7 +1748,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 8,
-    "description": "9KT Yellow Gold | Gold: 2.09g | Diamonds: 9pcs 0.18ct (H-I, VS-SI) | IGI | 10MMÃ—5MM",
+    "description": "9KT Yellow Gold | Gold: 2.09g | Diamonds: 9pcs 0.18ct (H-I, VS-SI) | IGI | 10MM×5MM",
     "attributes": {
       "Gold Karat": "9KT",
       "Gold Colour": "Yellow Gold",
@@ -1774,7 +1774,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 9,
-    "description": "9KT Yellow Gold | Gold: 2.04g | Diamonds: 22pcs 0.12ct (H-I, VS-SI) | IGI | 15MMÃ—20MM",
+    "description": "9KT Yellow Gold | Gold: 2.04g | Diamonds: 22pcs 0.12ct (H-I, VS-SI) | IGI | 15MM×20MM",
     "attributes": {
       "Gold Karat": "9KT",
       "Gold Colour": "Yellow Gold",
@@ -1800,7 +1800,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 9,
-    "description": "9KT Yellow Gold | Gold: 2.12g | Diamonds: 6pcs 0.12ct (H-I, VS-SI) | IGI | 10MMÃ—30MM",
+    "description": "9KT Yellow Gold | Gold: 2.12g | Diamonds: 6pcs 0.12ct (H-I, VS-SI) | IGI | 10MM×30MM",
     "attributes": {
       "Gold Karat": "9KT",
       "Gold Colour": "Yellow Gold",
@@ -1826,7 +1826,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 14,
-    "description": "14KT Rose Gold | Gold: 2.17g | Diamonds: 21pcs 0.14ct (H-I, VS-SI) | IGI | 4MMÃ—16INCH",
+    "description": "14KT Rose Gold | Gold: 2.17g | Diamonds: 21pcs 0.14ct (H-I, VS-SI) | IGI | 4MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1852,7 +1852,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 14,
-    "description": "14KT Rose Gold | Gold: 2.17g | Diamonds: 21pcs 0.09ct (H-I, VS-SI) | IGI | 4MMÃ—16INCH",
+    "description": "14KT Rose Gold | Gold: 2.17g | Diamonds: 21pcs 0.09ct (H-I, VS-SI) | IGI | 4MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -1877,7 +1877,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.3,
     "reviewCount": 26,
-    "description": "18KT Yellow Gold | Gold: 0.28g | Diamonds: 9pcs 0.04ct (H-I, VS-SI) | IGI | 3MMÃ—3MM",
+    "description": "18KT Yellow Gold | Gold: 0.28g | Diamonds: 9pcs 0.04ct (H-I, VS-SI) | IGI | 3MM×3MM",
     "attributes": {
       "Gold Karat": "18KT",
       "Gold Colour": "Yellow Gold",
@@ -1902,7 +1902,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "18KT Yellow Gold | Gold: 0.19g | Diamonds: 4pcs 0.04ct (H-I, VS-SI) | IGI | 2MMÃ—2MM",
+    "description": "18KT Yellow Gold | Gold: 0.19g | Diamonds: 4pcs 0.04ct (H-I, VS-SI) | IGI | 2MM×2MM",
     "attributes": {
       "Gold Karat": "18KT",
       "Gold Colour": "Yellow Gold",
@@ -1927,7 +1927,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 8,
-    "description": "18KT Yellow Gold | Gold: 0.14g | Diamonds: 1pcs 0.05ct (H-I, VS-SI) | IGI | 2MMÃ—2MM",
+    "description": "18KT Yellow Gold | Gold: 0.14g | Diamonds: 1pcs 0.05ct (H-I, VS-SI) | IGI | 2MM×2MM",
     "attributes": {
       "Gold Karat": "18KT",
       "Gold Colour": "Yellow Gold",
@@ -1952,7 +1952,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 8,
-    "description": "18KT Yellow Gold | Gold: 0.12g | Diamonds: 7pcs 0.03ct (H-I, VS-SI) | IGI | 2MMÃ—2MM",
+    "description": "18KT Yellow Gold | Gold: 0.12g | Diamonds: 7pcs 0.03ct (H-I, VS-SI) | IGI | 2MM×2MM",
     "attributes": {
       "Gold Karat": "18KT",
       "Gold Colour": "Yellow Gold",
@@ -1977,7 +1977,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 8,
-    "description": "18KT Yellow Gold | Gold: 0.27g | Diamonds: 4pcs 0.05ct (H-I, VS-SI) | IGI | 2MMÃ—2MM",
+    "description": "18KT Yellow Gold | Gold: 0.27g | Diamonds: 4pcs 0.05ct (H-I, VS-SI) | IGI | 2MM×2MM",
     "attributes": {
       "Gold Karat": "18KT",
       "Gold Colour": "Yellow Gold",
@@ -2002,7 +2002,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 9,
-    "description": "18KT Yellow Gold | Gold: 0.24g | Diamonds: 3pcs 0.04ct (H-I, VS-SI) | IGI | 1MMÃ—1MM",
+    "description": "18KT Yellow Gold | Gold: 0.24g | Diamonds: 3pcs 0.04ct (H-I, VS-SI) | IGI | 1MM×1MM",
     "attributes": {
       "Gold Karat": "18KT",
       "Gold Colour": "Yellow Gold",
@@ -2027,7 +2027,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 9,
-    "description": "18KT Yellow Gold | Gold: 0.22g | Diamonds: 9pcs 0.05ct (H-I, VS-SI) | IGI | 2MMÃ—3MM",
+    "description": "18KT Yellow Gold | Gold: 0.22g | Diamonds: 9pcs 0.05ct (H-I, VS-SI) | IGI | 2MM×3MM",
     "attributes": {
       "Gold Karat": "18KT",
       "Gold Colour": "Yellow Gold",
@@ -2053,7 +2053,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 9,
-    "description": "18KT Yellow Gold | Gold: 0.28g | Diamonds: 6pcs 0.04ct (H-I, VS-SI) | IGI | 1MMÃ—8MM",
+    "description": "18KT Yellow Gold | Gold: 0.28g | Diamonds: 6pcs 0.04ct (H-I, VS-SI) | IGI | 1MM×8MM",
     "attributes": {
       "Gold Karat": "18KT",
       "Gold Colour": "Yellow Gold",
@@ -2079,7 +2079,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 34,
-    "description": "14KT Yellow Gold | Gold: 2.1g | Diamonds: 7pcs 0.13ct (H-I, VS-SI) | IGI | 2MMÃ—16INCH",
+    "description": "14KT Yellow Gold | Gold: 2.1g | Diamonds: 7pcs 0.13ct (H-I, VS-SI) | IGI | 2MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -2105,7 +2105,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 34,
-    "description": "14KT Rose Gold | Gold: 2.03g | Diamonds: 7pcs 0.15ct (H-I, VS-SI) | IGI | 2MMÃ—16INCH",
+    "description": "14KT Rose Gold | Gold: 2.03g | Diamonds: 7pcs 0.15ct (H-I, VS-SI) | IGI | 2MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2131,7 +2131,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 34,
-    "description": "14KT Yellow Gold | Gold: 2.16g | Diamonds: 9pcs 0.14ct (H-I, VS-SI) | IGI | 4MMÃ—16INCH",
+    "description": "14KT Yellow Gold | Gold: 2.16g | Diamonds: 9pcs 0.14ct (H-I, VS-SI) | IGI | 4MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -2157,7 +2157,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 35,
-    "description": "14KT Rose Gold | Gold: 2.18g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MMÃ—16INCH",
+    "description": "14KT Rose Gold | Gold: 2.18g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2183,7 +2183,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 35,
-    "description": "14KT Rose Gold | Gold: 2.28g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MMÃ—16INCH",
+    "description": "14KT Rose Gold | Gold: 2.28g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2209,7 +2209,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 35,
-    "description": "14KT Rose Gold | Gold: 2.04g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MMÃ—16INCH",
+    "description": "14KT Rose Gold | Gold: 2.04g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2235,7 +2235,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 35,
-    "description": "14KT Rose Gold | Gold: 2.09g | Diamonds: 7pcs 0.12ct (H-I, VS-SI) | IGI | 3MMÃ—16INCH",
+    "description": "14KT Rose Gold | Gold: 2.09g | Diamonds: 7pcs 0.12ct (H-I, VS-SI) | IGI | 3MM×16INCH",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2261,7 +2261,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 46,
-    "description": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 13pcs 0.3ct (E-F, VVS-VS) | DGLA | 25MMÃ—25MM",
+    "description": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 13pcs 0.3ct (E-F, VVS-VS) | DGLA | 25MM×25MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -2287,7 +2287,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.3,
     "reviewCount": 26,
-    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 8MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2314,7 +2314,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Rose Gold | Gold: 2.8g | Diamonds: 16pcs 0.25ct (E-F, VVS-VS) | DGLA | 15MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 2.8g | Diamonds: 16pcs 0.25ct (E-F, VVS-VS) | DGLA | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2341,7 +2341,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Yellow Gold | Gold: 2.7g | Diamonds: 26pcs 0.25ct (E-F, VVS-VS) | DGLA | 12MMÃ—12MM",
+    "description": "14KT Yellow Gold | Gold: 2.7g | Diamonds: 26pcs 0.25ct (E-F, VVS-VS) | DGLA | 12MM×12MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -2368,7 +2368,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Yellow Gold | Gold: 1.09g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 25MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 1.09g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 25MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -2394,7 +2394,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.2,
     "reviewCount": 17,
-    "description": "14KT Yellow Gold | Gold: 1.12g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 12MMÃ—12MM",
+    "description": "14KT Yellow Gold | Gold: 1.12g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 12MM×12MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -2421,7 +2421,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 1.02g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 30MMÃ—25MM",
+    "description": "14KT Rose Gold | Gold: 1.02g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×25MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2447,7 +2447,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 56,
-    "description": "14KT Rose Gold | Gold: 1.23g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.23g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2474,7 +2474,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 1.01g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 30MMÃ—25MM",
+    "description": "14KT Rose Gold | Gold: 1.01g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 30MM×25MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2501,7 +2501,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Yellow Gold | Gold: 1.0g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 25MMÃ—9MM",
+    "description": "14KT Yellow Gold | Gold: 1.0g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 25MM×9MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -2527,7 +2527,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 60,
-    "description": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 9MMÃ—9MM",
+    "description": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 9MM×9MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -2554,7 +2554,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 0.92g | Diamonds: 14pcs 0.06ct (H-I, VS-SI) | IGI | 26MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 0.92g | Diamonds: 14pcs 0.06ct (H-I, VS-SI) | IGI | 26MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2580,7 +2580,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 6,
-    "description": "14KT Rose Gold | Gold: 0.97g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.97g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2607,7 +2607,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 0.94g | Diamonds: 15pcs 0.06ct (H-I, VS-SI) | IGI | 28MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 0.94g | Diamonds: 15pcs 0.06ct (H-I, VS-SI) | IGI | 28MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2633,7 +2633,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 8,
-    "description": "14KT Rose Gold | Gold: 1.05g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.05g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2660,7 +2660,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 0.97g | Diamonds: 17pcs 0.09ct (H-I, VS-SI) | IGI | 30MMÃ—9MM",
+    "description": "14KT Rose Gold | Gold: 0.97g | Diamonds: 17pcs 0.09ct (H-I, VS-SI) | IGI | 30MM×9MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2686,7 +2686,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 10,
-    "description": "14KT Rose Gold | Gold: 1.05g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 12MMÃ—12MM",
+    "description": "14KT Rose Gold | Gold: 1.05g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 12MM×12MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2713,7 +2713,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 51,
-    "description": "14KT Rose Gold | Gold: 1.0g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 15MMÃ—16MM",
+    "description": "14KT Rose Gold | Gold: 1.0g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×16MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2739,7 +2739,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 12,
-    "description": "14KT Rose Gold | Gold: 1.04g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.04g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2766,7 +2766,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 52,
-    "description": "14KT Rose Gold | Gold: 0.85g | Diamonds: 11pcs 0.09ct (H-I, VS-SI) | IGI | 16MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.85g | Diamonds: 11pcs 0.09ct (H-I, VS-SI) | IGI | 16MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2792,7 +2792,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 13,
-    "description": "14KT Rose Gold | Gold: 1.02g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 1.02g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2819,7 +2819,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 52,
-    "description": "14KT Rose Gold | Gold: 1.17g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 1.17g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2845,7 +2845,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.2,
     "reviewCount": 15,
-    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2872,7 +2872,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 52,
-    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 3pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 3pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2898,7 +2898,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.2,
     "reviewCount": 17,
-    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 4pcs 0.09ct (H-I, VS-SI) | IGI | 12MMÃ—12MM",
+    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 4pcs 0.09ct (H-I, VS-SI) | IGI | 12MM×12MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2925,7 +2925,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 53,
-    "description": "14KT Rose Gold | Gold: 1.07g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 14MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.07g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 14MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2951,7 +2951,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 54,
-    "description": "14KT Rose Gold | Gold: 1.0g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 12MMÃ—12MM",
+    "description": "14KT Rose Gold | Gold: 1.0g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 12MM×12MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -2978,7 +2978,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 55,
-    "description": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 15pcs 0.08ct (H-I, VS-SI) | IGI | 30MMÃ—16MM",
+    "description": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 15pcs 0.08ct (H-I, VS-SI) | IGI | 30MM×16MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3004,7 +3004,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 6,
-    "description": "14KT Yellow Gold | Gold: 1.03g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 1.03g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3031,7 +3031,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 55,
-    "description": "14KT Yellow Gold | Gold: 0.99g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 25MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 0.99g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 25MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3057,7 +3057,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 20MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3084,7 +3084,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 55,
-    "description": "14KT Rose Gold | Gold: 0.76g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.76g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3110,7 +3110,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 9,
-    "description": "14KT Rose Gold | Gold: 0.96g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.96g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3137,7 +3137,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 55,
-    "description": "14KT Rose Gold | Gold: 1.08g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 36MMÃ—9MM",
+    "description": "14KT Rose Gold | Gold: 1.08g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 36MM×9MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3163,7 +3163,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 11,
-    "description": "14KT Rose Gold | Gold: 1.34g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 30MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.34g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 30MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3190,7 +3190,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 55,
-    "description": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 30MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3216,7 +3216,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 12,
-    "description": "14KT Yellow Gold | Gold: 1.14g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 20MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 1.14g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 20MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3243,7 +3243,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 37,
-    "description": "14KT Yellow Gold | Gold: 1.06g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 30MMÃ—18MM",
+    "description": "14KT Yellow Gold | Gold: 1.06g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×18MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3269,7 +3269,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 60,
-    "description": "14KT Yellow Gold | Gold: 1.03g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 1.03g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3296,7 +3296,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 37,
-    "description": "14KT Yellow Gold | Gold: 1.15g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 20MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 1.15g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3322,7 +3322,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Yellow Gold | Gold: 1.2g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 9MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 1.2g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 9MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3349,7 +3349,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 37,
-    "description": "14KT Rose Gold | Gold: 0.9g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 30MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.9g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3375,7 +3375,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 8,
-    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 15MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3402,7 +3402,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.5,
     "reviewCount": 37,
-    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 9pcs 0.09ct (H-I, VS-SI) | IGI | 28MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 0.91g | Diamonds: 9pcs 0.09ct (H-I, VS-SI) | IGI | 28MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3428,7 +3428,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 10,
-    "description": "14KT Rose Gold | Gold: 1.01g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 18MMÃ—12MM",
+    "description": "14KT Rose Gold | Gold: 1.01g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 18MM×12MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3455,7 +3455,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Rose Gold | Gold: 1.06g | Diamonds: 22pcs 0.1ct (H-I, VS-SI) | IGI | 30MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 1.06g | Diamonds: 22pcs 0.1ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3481,7 +3481,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 6,
-    "description": "14KT Rose Gold | Gold: 1.09g | Diamonds: 22pcs 0.09ct (H-I, VS-SI) | IGI | 9MMÃ—9MM",
+    "description": "14KT Rose Gold | Gold: 1.09g | Diamonds: 22pcs 0.09ct (H-I, VS-SI) | IGI | 9MM×9MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3508,7 +3508,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Rose Gold | Gold: 0.94g | Diamonds: 22pcs 0.08ct (H-I, VS-SI) | IGI | 25MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 0.94g | Diamonds: 22pcs 0.08ct (H-I, VS-SI) | IGI | 25MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3534,7 +3534,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 11,
-    "description": "14KT Rose Gold | Gold: 1.11g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.11g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3561,7 +3561,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Rose Gold | Gold: 0.87g | Diamonds: 13pcs 0.08ct (H-I, VS-SI) | IGI | 28MMÃ—18MM",
+    "description": "14KT Rose Gold | Gold: 0.87g | Diamonds: 13pcs 0.08ct (H-I, VS-SI) | IGI | 28MM×18MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3587,7 +3587,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 13,
-    "description": "14KT Rose Gold | Gold: 1.05g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.05g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3614,7 +3614,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Yellow Gold | Gold: 1.05g | Diamonds: 4pcs 0.05ct (H-I, VS-SI) | IGI | 30MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 1.05g | Diamonds: 4pcs 0.05ct (H-I, VS-SI) | IGI | 30MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3640,7 +3640,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.2,
     "reviewCount": 15,
-    "description": "14KT Yellow Gold | Gold: 1.28g | Diamonds: 8pcs 0.06ct (H-I, VS-SI) | IGI | 28MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 1.28g | Diamonds: 8pcs 0.06ct (H-I, VS-SI) | IGI | 28MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3667,7 +3667,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Yellow Gold | Gold: 1.08g | Diamonds: 9pcs 0.06ct (H-I, VS-SI) | IGI | 28MMÃ—15MM",
+    "description": "14KT Yellow Gold | Gold: 1.08g | Diamonds: 9pcs 0.06ct (H-I, VS-SI) | IGI | 28MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3693,7 +3693,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.2,
     "reviewCount": 16,
-    "description": "14KT Yellow Gold | Gold: 1.02g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 8MMÃ—6MM",
+    "description": "14KT Yellow Gold | Gold: 1.02g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×6MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3720,7 +3720,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Rose Gold | Gold: 0.79g | Diamonds: 13pcs 0.09ct (H-I, VS-SI) | IGI | 25MMÃ—18MM",
+    "description": "14KT Rose Gold | Gold: 0.79g | Diamonds: 13pcs 0.09ct (H-I, VS-SI) | IGI | 25MM×18MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3746,7 +3746,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.2,
     "reviewCount": 18,
-    "description": "14KT Rose Gold | Gold: 0.89g | Diamonds: 26pcs 0.09ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.89g | Diamonds: 26pcs 0.09ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3773,7 +3773,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 40,
-    "description": "14KT Rose Gold | Gold: 1.04g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 30MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 1.04g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3799,7 +3799,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 56,
-    "description": "14KT Rose Gold | Gold: 0.97g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 0.97g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3826,7 +3826,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 41,
-    "description": "14KT Rose Gold | Gold: 0.89g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 25MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.89g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 25MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3852,7 +3852,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 57,
-    "description": "14KT Rose Gold | Gold: 1.06g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.06g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3879,7 +3879,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 41,
-    "description": "14KT Rose Gold | Gold: 1.1g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 30MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.1g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 30MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3905,7 +3905,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 59,
-    "description": "14KT Rose Gold | Gold: 1.08g | Diamonds: 18pcs 0.05ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.08g | Diamonds: 18pcs 0.05ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -3932,7 +3932,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 41,
-    "description": "14KT Yellow Gold | Gold: 1.14g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 30MMÃ—18MM",
+    "description": "14KT Yellow Gold | Gold: 1.14g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×18MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3957,7 +3957,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 7,
-    "description": "14KT Yellow Gold | Gold: 1.13g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 1.13g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -3984,7 +3984,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 41,
-    "description": "14KT Rose Gold | Gold: 1.09g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 30MMÃ—18MM",
+    "description": "14KT Rose Gold | Gold: 1.09g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 30MM×18MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4010,7 +4010,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 9,
-    "description": "14KT Rose Gold | Gold: 1.31g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Rose Gold | Gold: 1.31g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4037,7 +4037,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 41,
-    "description": "14KT Rose Gold | Gold: 0.85g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 30MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 0.85g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4063,7 +4063,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 11,
-    "description": "14KT Rose Gold | Gold: 1.07g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.07g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4090,7 +4090,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 41,
-    "description": "14KT Rose Gold | Gold: 0.81g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 20MMÃ—18MM",
+    "description": "14KT Rose Gold | Gold: 0.81g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×18MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4116,7 +4116,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 13,
-    "description": "14KT Rose Gold | Gold: 1.1g | Diamonds: 20pcs 1.1ct (H-I, VS-SI) | IGI | 9MMÃ—9MM",
+    "description": "14KT Rose Gold | Gold: 1.1g | Diamonds: 20pcs 1.1ct (H-I, VS-SI) | IGI | 9MM×9MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4143,7 +4143,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 41,
-    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 15pcs 0.09ct (H-I, VS-SI) | IGI | 30MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.98g | Diamonds: 15pcs 0.09ct (H-I, VS-SI) | IGI | 30MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4169,7 +4169,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.2,
     "reviewCount": 14,
-    "description": "14KT Rose Gold | Gold: 1.06g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 9MMÃ—9MM",
+    "description": "14KT Rose Gold | Gold: 1.06g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 9MM×9MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4196,7 +4196,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 41,
-    "description": "14KT Rose Gold | Gold: 1.12g | Diamonds: 5pcs 0.07ct (H-I, VS-SI) | IGI | 30MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 1.12g | Diamonds: 5pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4222,7 +4222,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.2,
     "reviewCount": 16,
-    "description": "14KT Rose Gold | Gold: 1.31g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 20MMÃ—6MM",
+    "description": "14KT Rose Gold | Gold: 1.31g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×6MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4249,7 +4249,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 42,
-    "description": "14KT Yellow Gold | Gold: 0.74g | Diamonds: 3pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 0.74g | Diamonds: 3pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4275,7 +4275,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 57,
-    "description": "14KT Yellow Gold | Gold: 0.88g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 0.88g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4302,7 +4302,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 42,
-    "description": "14KT Rose Gold | Gold: 0.81g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 15MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.81g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4328,7 +4328,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 5,
-    "description": "14KT Rose Gold | Gold: 1.0g | Diamonds: 22pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.0g | Diamonds: 22pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4355,7 +4355,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 46,
-    "description": "14KT Rose Gold | Gold: 0.87g | Diamonds: 21pcs 0.07ct (H-I, VS-SI) | IGI | 20MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 0.87g | Diamonds: 21pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4381,7 +4381,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 6,
-    "description": "14KT Rose Gold | Gold: 0.84g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.84g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4408,7 +4408,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 46,
-    "description": "14KT Rose Gold | Gold: 0.84g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 25MMÃ—20MM",
+    "description": "14KT Rose Gold | Gold: 0.84g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 25MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4434,7 +4434,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.1,
     "reviewCount": 10,
-    "description": "14KT Rose Gold | Gold: 0.93g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 15MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.93g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4461,7 +4461,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 47,
-    "description": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 12MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 12MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4487,7 +4487,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 47,
-    "description": "14KT Rose Gold | Gold: 0.96g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.96g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4514,7 +4514,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 47,
-    "description": "14KT Yellow Gold | Gold: 0.93g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 30MMÃ—15MM",
+    "description": "14KT Yellow Gold | Gold: 0.93g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 30MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4540,7 +4540,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 49,
-    "description": "14KT Yellow Gold | Gold: 1.06g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 20MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 1.06g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4567,7 +4567,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 47,
-    "description": "14KT Yellow Gold | Gold: 0.74g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 30MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 0.74g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4593,7 +4593,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 50,
-    "description": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4620,7 +4620,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 47,
-    "description": "14KT Yellow Gold | Gold: 1.01g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 1.01g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4647,7 +4647,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 48,
-    "description": "14KT Rose Gold | Gold: 0.92g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 15MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.92g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4673,7 +4673,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 54,
-    "description": "14KT Rose Gold | Gold: 1.03g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 15MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 1.03g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4700,7 +4700,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 48,
-    "description": "14KT Rose Gold | Gold: 1.014g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 20MMÃ—30MM",
+    "description": "14KT Rose Gold | Gold: 1.014g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 20MM×30MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4726,7 +4726,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 56,
-    "description": "14KT Rose Gold | Gold: 0.99g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.99g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4753,7 +4753,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 48,
-    "description": "14KT Rose Gold | Gold: 0.84g | Diamonds: 16pcs 0.06ct (H-I, VS-SI) | IGI | 25MMÃ—15MM",
+    "description": "14KT Rose Gold | Gold: 0.84g | Diamonds: 16pcs 0.06ct (H-I, VS-SI) | IGI | 25MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4779,7 +4779,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 57,
-    "description": "14KT Rose Gold | Gold: 1.08g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.08g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4806,7 +4806,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 48,
-    "description": "14KT Rose Gold | Gold: 0.83g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 15MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.83g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4832,7 +4832,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 59,
-    "description": "14KT Rose Gold | Gold: 0.96g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 0.96g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -4859,7 +4859,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 48,
-    "description": "14KT Yellow Gold | Gold: 0.61g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 20MMÃ—15MM",
+    "description": "14KT Yellow Gold | Gold: 0.61g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×15MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4885,7 +4885,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4,
     "reviewCount": 6,
-    "description": "14KT Yellow Gold | Gold: 0.98g | Diamonds: 28pcs 0.12ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 0.98g | Diamonds: 28pcs 0.12ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4912,7 +4912,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 49,
-    "description": "14KT Yellow Gold | Gold: 0.81g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 20MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 0.81g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 20MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4938,7 +4938,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.7,
     "reviewCount": 45,
-    "description": "14KT Yellow Gold | Gold: 1.01g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 1.01g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4965,7 +4965,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 53,
-    "description": "14KT Yellow Gold | Gold: 0.91g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 15MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 0.91g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -4991,7 +4991,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 56,
-    "description": "14KT Yellow Gold | Gold: 1.152g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 1.152g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -5018,7 +5018,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 8pcs 0.07ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 8pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -5044,7 +5044,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 54,
-    "description": "14KT Yellow Gold | Gold: 1.05g | Diamonds: 14pcs 0.06ct (H-I, VS-SI) | IGI | 8MMÃ—8MM",
+    "description": "14KT Yellow Gold | Gold: 1.05g | Diamonds: 14pcs 0.06ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -5070,7 +5070,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.8,
     "reviewCount": 56,
-    "description": "14KT Rose Gold | Gold: 1.016g | Diamonds: 10pcs 0.08ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Rose Gold | Gold: 1.016g | Diamonds: 10pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Rose Gold",
@@ -5097,7 +5097,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 11pcs 0.06ct (H-I, VS-SI) | IGI | 10MMÃ—10MM",
+    "description": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 11pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -5123,7 +5123,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.9,
     "reviewCount": 58,
-    "description": "14KT Yellow Gold | Gold: 0.916g | Diamonds: 10pcs 0.05ct (H-I, VS-SI) | IGI | 5MMÃ—5MM",
+    "description": "14KT Yellow Gold | Gold: 0.916g | Diamonds: 10pcs 0.05ct (H-I, VS-SI) | IGI | 5MM×5MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",
@@ -5149,7 +5149,7 @@ export const realProducts: RealProduct[] = [
     "stock": 50,
     "rating": 4.6,
     "reviewCount": 39,
-    "description": "14KT Yellow Gold | Gold: 0.68g | Diamonds: 6pcs 0.03ct (H-I, VS-SI) | IGI | 28MMÃ—20MM",
+    "description": "14KT Yellow Gold | Gold: 0.68g | Diamonds: 6pcs 0.03ct (H-I, VS-SI) | IGI | 28MM×20MM",
     "attributes": {
       "Gold Karat": "14KT",
       "Gold Colour": "Yellow Gold",

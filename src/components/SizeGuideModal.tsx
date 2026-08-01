@@ -65,6 +65,13 @@ export function SizeGuideModal({ onClose }: SizeGuideModalProps) {
           <div className="rounded-xl bg-gold-light/20 border border-gold/20 px-4 py-3 text-sm text-ink/70">
             <p className="font-medium text-brand mb-1">How to measure</p>
             <p>Wrap a strip of paper or a thread around your finger / wrist. Mark where it meets, then measure the length with a ruler.</p>
+            <a
+              href="/downloads/lakshiraah-ring-size-chart.pdf"
+              download
+              className="mt-2 inline-block text-gold underline hover:text-brand"
+            >
+              Download printable ring size chart (PDF)
+            </a>
           </div>
 
           {/* Ring sizes */}

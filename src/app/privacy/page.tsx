@@ -27,7 +27,8 @@ export default function PrivacyPage() {
       <h2>Sharing</h2>
       <p>
         We do not sell your personal information. We share it only with trusted service providers (such as
-        delivery partners and payment processors) to the extent necessary to fulfil your order.
+        delivery partners and our payment gateway, Razorpay, which processes all online payments securely) to
+        the extent necessary to fulfil your order.
       </p>
 
       <h2>Your choices</h2>

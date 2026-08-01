@@ -8,13 +8,13 @@ export default function ShippingReturnsPage() {
       <h2>Shipping</h2>
       <ul>
         <li>Free shipping on orders over ₹999; a flat fee applies below that.</li>
-        <li>Orders are typically dispatched within 1-3 business days.</li>
+        <li>Orders are typically dispatched within 7 business days.</li>
         <li>All shipments are insured and require a signature on delivery.</li>
       </ul>
 
       <h2>Returns & exchanges</h2>
       <ul>
-        <li>We offer a 15-day return/exchange window from the date of delivery.</li>
+        <li>We offer a 7-day return/exchange window from the date of delivery.</li>
         <li>Items must be unworn, in original condition, with all tags and certificates intact.</li>
         <li>Made-to-order, engraved, or resized pieces are not eligible for return.</li>
       </ul>

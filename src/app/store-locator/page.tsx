@@ -11,7 +11,7 @@ export default function StoreLocatorPage() {
           [Store address] · [City, State, Pincode]
         </p>
         <p className="text-sm text-ink/60">Open Mon-Sat, 10am-7pm IST</p>
-        <p className="text-sm text-ink/60">+91 12345 67890</p>
+        <p className="text-sm text-ink/60">+91 70775 96064</p>
       </div>
 
       <p className="mt-6 text-sm text-ink/50">

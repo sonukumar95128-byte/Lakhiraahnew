@@ -92,6 +92,7 @@ export default async function ProductDetailPage({
             rating={product.rating}
             reviewCount={product.reviewCount}
             category={category}
+            attributes={product.attributes}
           />
         </div>
       </div>

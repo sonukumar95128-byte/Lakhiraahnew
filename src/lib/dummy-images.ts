@@ -80,7 +80,7 @@ export const dummyTestimonials: DummyTestimonial[] = [
   {
     name: "Priya Nair",
     rating: 4,
-    text: "Gorgeous earrings, exactly like the pictures. Delivery was quick and the 15-day return policy gave me peace of mind.",
+    text: "Gorgeous earrings, exactly like the pictures. Delivery was quick and the 7-day return policy gave me peace of mind.",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop",
     verified: true,
   },
@@ -155,6 +155,18 @@ export const colorOptions: { label: string; swatch: string }[] = [
 
 export const purityOptions = ["9kt Gold", "14kt Gold", "18kt Gold"];
 
+// Parses the karat number out of strings like "14KT", "14kt Gold", "9KT" — defaults to 14 if unrecognized.
+export function karatNumber(input: string | undefined): number {
+  const match = input?.match(/(\d+)\s*k/i);
+  return match ? Number(match[1]) : 14;
+}
+
+// Picks the purityOptions entry matching a product's actual base karat, so the selector
+// defaults to what the product really is instead of always "9kt Gold".
+export function defaultPurityForKarat(karat: number): string {
+  return purityOptions.find((p) => karatNumber(p) === karat) ?? "14kt Gold";
+}
+
 export function getSizeOptions(category: Category): string[] {
   switch (category) {
     case "Rings":
@@ -178,14 +190,20 @@ export type PriceBreakup = {
   total: number;
 };
 
-export function getPriceBreakup(price: string): PriceBreakup {
+// baseKarat is the karat the listed `price` actually reflects (from the product's "Gold Karat"
+// attribute); selectedKarat is whatever the shopper has picked in the Metal Purity selector.
+// The gold portion scales with the karat ratio (purity/24) — everything else (diamond, making, GST)
+// stays put since only the gold content changes with purity.
+export function getPriceBreakup(price: string, selectedKarat: number = 14, baseKarat: number = 14): PriceBreakup {
   const total = priceToNumber(price);
-  const gold = Math.round(total * 0.62);
+  const goldAtBase = total * 0.62;
+  const gold = Math.round(goldAtBase * (selectedKarat / baseKarat));
   const diamond = Math.round(total * 0.27);
   const otherStones = Math.round(total * 0.02);
   const making = Math.round(total * 0.06);
-  const gst = total - gold - diamond - otherStones - making;
-  return { gold, diamond, otherStones, making, gst, total };
+  const gst = Math.round((gold + diamond + otherStones + making) * 0.03);
+  const adjustedTotal = gold + diamond + otherStones + making + gst;
+  return { gold, diamond, otherStones, making, gst, total: adjustedTotal };
 }
 
 export type Coupon = { code: string; discountInPaise: number; label: string };

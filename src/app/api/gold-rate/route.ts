@@ -3,14 +3,18 @@ import { NextResponse } from "next/server";
 // Converts international gold spot price (USD/troy oz) to INR/gram for 22kt gold
 export async function GET() {
   try {
-    // Fetch gold spot price in USD/troy oz
-    const goldRes = await fetch("https://metals.live/api/spot/gold", {
+    // Fetch gold spot price in USD/troy oz (goldprice.org's public feed — requires
+    // browser-like headers, otherwise returns 403)
+    const goldRes = await fetch("https://data-asg.goldprice.org/dbXRates/USD", {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+        Referer: "https://goldprice.org/",
+      },
       next: { revalidate: 3600 }, // Cache for 1 hour
     });
     if (!goldRes.ok) throw new Error("Gold price fetch failed");
     const goldData = await goldRes.json();
-    // metals.live returns { price: number, ... }
-    const usdPerTroyOz: number = goldData.price ?? goldData[0]?.price;
+    const usdPerTroyOz: number = goldData.items?.[0]?.xauPrice;
     if (!usdPerTroyOz) throw new Error("Invalid gold price response");
 
     // Fetch USD → INR exchange rate

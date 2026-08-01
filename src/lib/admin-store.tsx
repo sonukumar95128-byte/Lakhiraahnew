@@ -153,7 +153,7 @@ const TRUST_BADGES_KEY = "lakshiraah-trust-badges";
 const seedTrustBadges: TrustBadge[] = [
   { id: "badge-1", icon: "✓", label: "Hallmarked", sub: "BIS certified", enabled: true },
   { id: "badge-2", icon: "🚚", label: "Free shipping", sub: "Over ₹999", enabled: true },
-  { id: "badge-3", icon: "↺", label: "15-day returns", sub: "Easy & free", enabled: true },
+  { id: "badge-3", icon: "↺", label: "7-day returns", sub: "Easy & free", enabled: true },
   { id: "badge-4", icon: "♾", label: "Lifetime exchange", sub: "Buyback support", enabled: true },
 ];
 
@@ -270,7 +270,7 @@ const seedBestSellers: string[] = dummyProducts.slice(8, 16).map((p) => p.slug);
 const seedSettings: SiteSettings = {
   goldRatePerGram: 7128,
   goldRateMode: "auto",
-  announcementText: "Free shipping over ₹999 · Today's gold rate ₹7,128/g · Easy 15-day returns",
+  announcementText: "Free shipping over ₹999 · Today's gold rate ₹7,128/g · Easy 7-day returns",
   freeShippingThresholdInPaise: 99900,
   paymentMethods: { upi: true, card: true, netbanking: true, cod: true },
   gstPercent: 3,
