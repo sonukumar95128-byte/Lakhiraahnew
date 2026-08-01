@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -94,15 +93,7 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl grid grid-cols-[auto_1fr_auto] items-center gap-6 px-4 sm:px-6 py-3">
         <Link href="/" className="shrink-0 flex items-center gap-2">
-          <Image
-            src="/brand/lakshiraah-logo.png"
-            alt="Lakshiraah — Luxurious Concepts"
-            width={160}
-            height={44}
-            className="h-10 w-auto object-contain"
-            priority
-          />
-          <span className="font-heading text-2xl font-bold text-gold hidden sm:inline">Lakshiraah</span>
+          <span className="font-heading text-4xl font-bold text-gold">Lakshiraah</span>
         </Link>
 
         <nav

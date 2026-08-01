@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const shopLinks = ["Rings", "Earrings", "Necklaces", "Bracelets", "Pendants", "Nose Pins"];
@@ -55,15 +54,8 @@ export function Footer() {
     <footer className="mt-16 bg-brand text-gold-light/80">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <div className="flex items-center gap-2 mb-3">
-            <Image
-              src="/brand/lakshiraah-logo.png"
-              alt="Lakshiraah"
-              width={220}
-              height={60}
-              className="h-16 w-auto object-contain"
-            />
-            <span className="font-heading text-2xl font-bold text-gold">Lakshiraah</span>
+          <div className="mb-3">
+            <span className="font-heading text-4xl font-bold text-gold">Lakshiraah</span>
           </div>
           <p className="text-xs text-gold-light/60 leading-relaxed">
             Luxurious concepts in fine jewellery — handcrafted, hallmarked, and certified.
