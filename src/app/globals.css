@@ -77,10 +77,30 @@ body {
 .animate-stagger > *:nth-child(8) { animation-delay: 0.40s; }
 
 /* Smooth page transitions */
-* { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
+
+/* Shared easing — soft, decelerating, Apple-like */
+:root {
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 /* Better link & button hover feel */
-a, button { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+a, button { transition-timing-function: var(--ease-smooth); }
+
+/* Interactive surfaces settle instead of snapping */
+a, button, img, [class*="transition"] {
+  transition-timing-function: var(--ease-smooth);
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* ─────────────────────────────────────────────────────── */
 

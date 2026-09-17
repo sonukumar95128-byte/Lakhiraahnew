@@ -54,7 +54,7 @@ export function HeroSlider({ slides }: { slides: Slide[] }) {
           key={slide.href + i}
           href={slide.href}
           className={
-            "absolute inset-0 transition-opacity duration-700 " +
+            "absolute inset-0 transition-opacity duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] " +
             (i === active ? "opacity-100 z-10" : "opacity-0 z-0")
           }
           aria-hidden={i !== active}
@@ -66,7 +66,10 @@ export function HeroSlider({ slides }: { slides: Slide[] }) {
             fill
             priority={i === 0}
             sizes="100vw"
-            className="object-cover"
+            className={
+              "object-cover transition-transform duration-[6000ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none " +
+              (i === active ? "scale-[1.04]" : "scale-100")
+            }
           />
         </Link>
       ))}
