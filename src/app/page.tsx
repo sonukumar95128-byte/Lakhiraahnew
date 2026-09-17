@@ -7,7 +7,7 @@ import { CuratedProductGrid } from "@/components/CuratedProductGrid";
 import { HeroSlider } from "@/components/HeroSlider";
 import { PromoSlider } from "@/components/PromoSlider";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ReelsSection } from "@/components/ReelsSection";
+import { ShowcaseSlider } from "@/components/ShowcaseSlider";
 import {
   categories,
   categoryImages as defaultCategoryImages,
@@ -18,8 +18,7 @@ import {
   productImages,
   collectionImages,
 } from "@/lib/dummy-images";
-import type {
-  AdminReel,
+import type {
   AdminCollection,
   AdminTestimonial,
   HomepageSection,
@@ -82,7 +81,7 @@ async function getSiteConfig() {
     const prisma = getPrisma();
     const rows = await prisma.siteConfig.findMany({
       where: {
-        key: { in: ["banners", "homepage", "testimonials", "collections", "newArrivals", "bestSellers", "categoryImages", "reels", "trustBadges"] },
+        key: { in: ["banners", "homepage", "testimonials", "collections", "newArrivals", "bestSellers", "categoryImages", "trustBadges"] },
       },
     });
     const db: Record<string, unknown> = {};
@@ -107,8 +106,7 @@ export default async function Home() {
 
   // Content
   const collections: AdminCollection[] = (db.collections as AdminCollection[]) ?? defaultCollections;
-  const testimonials: AdminTestimonial[] = (db.testimonials as AdminTestimonial[]) ?? defaultTestimonials;
-  const reels: AdminReel[] = (db.reels as AdminReel[]) ?? [];
+  const testimonials: AdminTestimonial[] = (db.testimonials as AdminTestimonial[]) ?? defaultTestimonials;
   const trustBadges: TrustBadge[] = (db.trustBadges as TrustBadge[]) ?? defaultTrustBadges;
   const catImages: Record<string, string> = (db.categoryImages as Record<string, string>) ?? {};
   const newArrivalsSlugs: string[] = (db.newArrivals as string[]) ?? dummyProducts.slice(0, 8).map((p) => p.slug);
@@ -118,6 +116,25 @@ export default async function Home() {
   const liveHeroSlides = heroSlidesAdmin
     .filter((s) => s.enabled)
     .map((s) => ({ image: s.image, href: s.link, alt: s.title }));
+
+  // Spotlight picks — one per category, skipping whatever the two grids above
+  // already show, so the slider never repeats them.
+  const showcaseSlugs = (() => {
+    const used = new Set([...newArrivalsSlugs, ...bestSellersSlugs]);
+    const seen = new Set<string>();
+    const picks: string[] = [];
+    for (const p of dummyProducts) {
+      if (used.has(p.slug) || seen.has(p.category)) continue;
+      seen.add(p.category);
+      picks.push(p.slug);
+    }
+    for (const p of dummyProducts) {
+      if (picks.length >= 8) break;
+      if (used.has(p.slug) || picks.includes(p.slug)) continue;
+      picks.push(p.slug);
+    }
+    return picks;
+  })();
 
   const homeSlides = promoStrips.filter((p) => p.position === "Homepage slider" && p.enabled !== false);
   const liveCollections = collections.filter((c) => c.enabled);
@@ -175,11 +192,11 @@ export default async function Home() {
           </section>
         )}
 
-        {/* Video Reels */}
-        {isOn("reels") && reels.filter((r) => r.enabled).length > 0 && (
+        {/* Showcase slider — jewellery you can tap straight through to */}
+        {isOn("reels") && showcaseSlugs.length > 0 && (
           <section>
-            <SectionHeading title="Styling Reels" subtitle="Watch our jewellery in action" />
-            <ReelsSection reels={reels} />
+            <SectionHeading title="In the Spotlight" subtitle="Tap a piece to see it up close" />
+            <ShowcaseSlider slugs={showcaseSlugs} />
           </section>
         )}
 

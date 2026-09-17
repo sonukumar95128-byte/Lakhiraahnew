@@ -12,7 +12,7 @@ const securityHeaders = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' https://checkout.razorpay.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://res.cloudinary.com https://images.unsplash.com https://lakshiraah.com https://pub-*.r2.dev https://blob.vercel-storage.com https://*.public.blob.vercel-storage.com",
+      "img-src 'self' data: blob: https://res.cloudinary.com https://images.unsplash.com https://i.ytimg.com https://lakshiraah.com https://pub-*.r2.dev https://blob.vercel-storage.com https://*.public.blob.vercel-storage.com",
       "connect-src 'self' https://api.razorpay.com https://lottie.host https://*.public.blob.vercel-storage.com",
       "frame-src https://api.razorpay.com https://checkout.razorpay.com https://www.youtube.com https://youtube.com",
       "font-src 'self' https://fonts.gstatic.com",
