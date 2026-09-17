@@ -8,6 +8,7 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { PromoSlider } from "@/components/PromoSlider";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ShowcaseSlider } from "@/components/ShowcaseSlider";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import {
   categories,
   categoryImages as defaultCategoryImages,
@@ -173,7 +174,7 @@ export default async function Home() {
   const liveTestimonials = testimonials
     .filter((t) => t.status === "approved")
     .sort((a, b) => Number(b.featured) - Number(a.featured))
-    .slice(0, 3);
+    .slice(0, 9);
 
   return (
     <div className="space-y-16 pb-16">
@@ -280,30 +281,7 @@ export default async function Home() {
         {isOn("testimonials") && (
           <section>
             <SectionHeading title="What our customers say" subtitle="★ 4.8 average · 12,400+ verified reviews" />
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {liveTestimonials.map((t) => (
-                <div key={t.id} className="rounded-lg border border-beige p-4">
-                  <div className="text-gold text-sm mb-2">{"★".repeat(t.rating)}{"☆".repeat(5 - t.rating)}</div>
-                  <p className="text-sm text-ink/80 leading-relaxed mb-3">{t.text}</p>
-                  <div className="flex items-center gap-2">
-                    {t.avatar ? (
-                      <div className="relative h-8 w-8 rounded-full overflow-hidden shrink-0">
-                        <Image src={t.avatar} alt={t.name} fill sizes="32px" className="object-cover" />
-                      </div>
-                    ) : (
-                      <div className="h-8 w-8 rounded-full bg-brand/10 flex items-center justify-center text-brand text-sm font-medium shrink-0">
-                        {t.name.charAt(0)}
-                      </div>
-                    )}
-                    <span className="text-sm font-medium text-brand">{t.name}</span>
-                    <span className="text-xs text-gold ml-auto">✓ verified</span>
-                  </div>
-                </div>
-              ))}
-              {liveTestimonials.length === 0 && (
-                <p className="col-span-full text-center text-sm text-ink/40 py-8">No approved testimonials yet.</p>
-              )}
-            </div>
+            <TestimonialsCarousel testimonials={liveTestimonials} />
           </section>
         )}
       </div>
