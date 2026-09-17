@@ -3,6 +3,17 @@
 import Link from "next/link";
 import { useCart } from "@/lib/cart-store";
 import { useWishlist } from "@/lib/wishlist-store";
+import { COMPARE_LIMIT, useCompare } from "@/lib/compare-store";
+
+function CompareIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 17V7m0 0L1.5 10.5M4 7l2.5 3.5" />
+      <path d="M20 7v10m0 0l2.5-3.5M20 17l-2.5-3.5" />
+      <path d="M9 12h6" />
+    </svg>
+  );
+}
 
 type ProductCardProps = {
   slug: string;
@@ -19,6 +30,8 @@ export function ProductCard({ slug, image, hoverImage, name, price, badge, href 
   const inBag = items.some((i) => i.slug === slug);
   const { isWishlisted, toggleWishlist } = useWishlist();
   const wishlisted = isWishlisted(slug);
+  const { isComparing, toggleCompare, isFull } = useCompare();
+  const comparing = isComparing(slug);
 
   return (
     <div className="group bg-white rounded-2xl shadow-sm hover:shadow-md border border-beige/70 overflow-hidden transition-all duration-300 hover:-translate-y-1 animate-fadeUp">
@@ -77,6 +90,31 @@ export function ProductCard({ slug, image, hoverImage, name, price, badge, href 
             {badge}
           </span>
         )}
+
+        {/* Compare toggle — sits over the photo, top right */}
+        <button
+          onClick={() => toggleCompare(slug)}
+          disabled={!comparing && isFull}
+          aria-pressed={comparing}
+          title={
+            comparing
+              ? "Remove from compare"
+              : isFull
+                ? `Compare holds ${COMPARE_LIMIT} pieces`
+                : "Add to compare"
+          }
+          aria-label={comparing ? "Remove from compare" : "Add to compare"}
+          className={
+            "absolute top-2.5 right-2.5 z-10 grid h-8 w-8 place-items-center rounded-full border backdrop-blur transition-colors " +
+            (comparing
+              ? "border-gold bg-gold text-brand"
+              : isFull
+                ? "border-beige bg-white/70 text-ink/25 cursor-not-allowed"
+                : "border-beige bg-white/80 text-ink/50 hover:border-gold hover:text-gold")
+          }
+        >
+          <CompareIcon />
+        </button>
       </div>
 
       {/* Info + actions inside the card */}

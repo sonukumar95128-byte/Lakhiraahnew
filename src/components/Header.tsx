@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useCart } from "@/lib/cart-store";
 import { useWishlist } from "@/lib/wishlist-store";
+import { useCompare } from "@/lib/compare-store";
 import { useUser } from "@/lib/user-store";
 
 const navLinks = [
@@ -21,6 +22,16 @@ function HeartIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
       <path d="M12 20.5s-7.5-4.6-9.8-9.1C.6 8 2 4.5 5.4 3.7c2.1-.5 4.2.3 5.6 2.1l1 1.3 1-1.3c1.4-1.8 3.5-2.6 5.6-2.1 3.4.8 4.8 4.3 3.2 7.7-2.3 4.5-9.8 9.1-9.8 9.1z" />
+    </svg>
+  );
+}
+
+function CompareIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 17V7m0 0L1.5 10.5M4 7l2.5 3.5" />
+      <path d="M20 7v10m0 0l2.5-3.5M20 17l-2.5-3.5" />
+      <path d="M9 12h6" />
     </svg>
   );
 }
@@ -55,6 +66,7 @@ function SearchIcon() {
 export function Header() {
   const { itemCount } = useCart();
   const { count: wishlistCount } = useWishlist();
+  const { count: compareCount } = useCompare();
   const { user, isLoggedIn } = useUser();
   const router = useRouter();
   const [search, setSearch] = useState("");
@@ -144,6 +156,21 @@ export function Header() {
             {wishlistCount > 0 && (
               <span className="absolute -top-1.5 -right-1.5 grid h-5 w-5 place-items-center rounded-full bg-gold text-[10px] font-medium text-brand">
                 {wishlistCount > 9 ? "9+" : wishlistCount}
+              </span>
+            )}
+          </Link>
+          <Link
+            href="/compare"
+            aria-label="Compare"
+            className={
+              "relative grid h-9 w-9 place-items-center rounded-full border transition-colors hover:border-gold hover:text-gold " +
+              (dark ? "border-gold-light/25 text-gold-light/80" : "border-beige text-ink/70")
+            }
+          >
+            <CompareIcon />
+            {compareCount > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 grid h-5 w-5 place-items-center rounded-full bg-gold text-[10px] font-medium text-brand">
+                {compareCount}
               </span>
             )}
           </Link>

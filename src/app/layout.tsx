@@ -5,6 +5,7 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { CartProvider } from "@/lib/cart-store";
 import { AdminProvider } from "@/lib/admin-store";
 import { WishlistProvider } from "@/lib/wishlist-store";
+import { CompareProvider } from "@/lib/compare-store";
 import { UserProvider } from "@/lib/user-store";
 
 const cormorant = Cormorant_Garamond({
@@ -42,7 +43,9 @@ export default function RootLayout({
           <UserProvider>
             <CartProvider>
               <WishlistProvider>
-                <SiteChrome>{children}</SiteChrome>
+                <CompareProvider>
+                  <SiteChrome>{children}</SiteChrome>
+                </CompareProvider>
               </WishlistProvider>
             </CartProvider>
           </UserProvider>
