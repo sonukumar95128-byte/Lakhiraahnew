@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import QRCode from "qrcode";
 import { CheckoutStepper } from "@/components/CheckoutStepper";
@@ -24,6 +24,18 @@ type Address = {
   country: string;
 };
 
+// `upi://` links only resolve on a phone, so the deep-link button is for
+// touch devices and desktop is pointed at the QR instead.
+const TOUCH_QUERY = "(hover: none) and (pointer: coarse)";
+
+function subscribeToPointer(onChange: () => void) {
+  const mq = window.matchMedia(TOUCH_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+const isTouchNow = () => window.matchMedia(TOUCH_QUERY).matches;
+
 const emptyAddress: Address = {
   fullName: "",
   countryCode: "+91",
@@ -45,7 +57,10 @@ export default function CheckoutPage() {
   const [placing, setPlacing] = useState(false);
   const [placed, setPlaced] = useState(false);
   const [utrInput, setUtrInput] = useState("");
-  const [qrDataUrl, setQrDataUrl] = useState("");
+  const [qr, setQr] = useState({ link: "", dataUrl: "" });
+  const [confirmError, setConfirmError] = useState("");
+  const [copied, setCopied] = useState(false);
+  const isTouchDevice = useSyncExternalStore(subscribeToPointer, isTouchNow, () => false);
   const orderSavedRef = useRef(false);
 
   const cartItems = cart
@@ -59,8 +74,19 @@ export default function CheckoutPage() {
     () => cartItems.reduce((sum, i) => sum + priceToNumber(i.product.price) * i.quantity, 0),
     [cartItems]
   );
-  const discount = cartItems.length > 0 ? 1200 : 0;
-  const total = subtotal - discount;
+  // Never discount below the cart value — a negative amount makes the UPI
+  // request invalid and every app rejects it.
+  const discount = cartItems.length > 0 ? Math.min(1200, subtotal) : 0;
+  const total = Math.max(subtotal - discount, 0);
+
+  // UPI wants a plain two-decimal amount, and handles look like name@bank.
+  const upiAmount = total.toFixed(2);
+  const upiId = (settings.upiId ?? "").trim();
+  const upiIdValid = /^[\w.\-]{2,}@[a-zA-Z]{2,}$/.test(upiId);
+  const upiPayable = upiIdValid && total > 0;
+  const upiLink = upiPayable
+    ? `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent("Lakshiraah")}&am=${upiAmount}&cu=INR&tn=${encodeURIComponent(orderId ?? "Jewellery Order")}`
+    : "";
 
   const addressValid =
     address.fullName && address.phone && address.line1 && address.city && address.state && address.pincode;
@@ -92,29 +118,38 @@ export default function CheckoutPage() {
     }
   };
 
-  // Generate UPI QR code when reaching payment step
+  // Generate the UPI QR when reaching payment. Keyed by the link it encodes,
+  // so a stale QR is never shown against a changed amount or UPI ID.
   useEffect(() => {
-    if (step !== 2 || !settings.upiId) return;
-    const upiUrl = `upi://pay?pa=${encodeURIComponent(settings.upiId)}&pn=${encodeURIComponent("Lakshiraah")}&am=${total}&cu=INR&tn=${encodeURIComponent(orderId ?? "Jewellery Order")}`;
-    QRCode.toDataURL(upiUrl, { width: 220, margin: 2 })
-      .then(setQrDataUrl)
+    if (step !== 2 || !upiLink) return;
+    let cancelled = false;
+    QRCode.toDataURL(upiLink, { width: 220, margin: 2 })
+      .then((dataUrl) => {
+        if (!cancelled) setQr({ link: upiLink, dataUrl });
+      })
       .catch(() => {});
-  }, [step, settings.upiId, total, orderId]);
+    return () => { cancelled = true; };
+  }, [step, upiLink]);
 
   const handleConfirmPayment = async () => {
     setPlacing(true);
+    setConfirmError("");
     try {
       if (orderId) {
-        await fetch("/api/orders", {
-          method: "PATCH",
+        // Records the claim against the order; an admin still verifies it.
+        const res = await fetch("/api/orders/confirm", {
+          method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id: orderId, status: "paid", utrNumber: utrInput }),
+          body: JSON.stringify({ orderId, utrNumber: utrInput }),
         });
+        if (!res.ok) throw new Error("confirm failed");
       }
       clearCart();
       setPlaced(true);
     } catch {
-      setPlaced(true);
+      setConfirmError(
+        "We couldn't record your payment just now. Please try again, or message us on WhatsApp with your payment reference.",
+      );
     }
     setPlacing(false);
   };
@@ -241,30 +276,53 @@ export default function CheckoutPage() {
 
               <div className="rounded-xl border border-beige bg-white p-6 flex flex-col items-center gap-4 max-w-sm">
                 {/* QR Code */}
-                {qrDataUrl ? (
+                {qr.dataUrl && qr.link === upiLink ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={qrDataUrl} alt="UPI QR Code" className="w-52 h-52 rounded-lg" />
-                ) : settings.upiId ? (
+                  <img src={qr.dataUrl} alt="UPI QR Code" className="w-52 h-52 rounded-lg" />
+                ) : upiPayable ? (
                   <div className="w-52 h-52 rounded-lg bg-beige animate-pulse" />
                 ) : (
-                  <div className="w-52 h-52 rounded-lg bg-beige flex items-center justify-center text-xs text-ink/40 text-center p-4">
-                    UPI ID not set.<br />Admin → Settings → UPI Payment
+                  <div className="w-52 h-52 rounded-lg bg-beige flex items-center justify-center text-xs text-ink/50 text-center p-4">
+                    {upiId && !upiIdValid
+                      ? "This store's UPI ID looks incorrect, so payment can't be collected right now. Please contact us to complete your order."
+                      : "UPI payment isn't set up yet. Please contact us to complete your order."}
                   </div>
                 )}
 
                 <div className="text-center">
                   <p className="text-2xl font-semibold text-brand">{formatRupee(total)}</p>
-                  <p className="text-xs text-ink/50 mt-0.5">{settings.upiId || "—"}</p>
+                  {upiIdValid && (
+                    <button
+                      onClick={async () => {
+                        try {
+                          await navigator.clipboard.writeText(upiId);
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        } catch {
+                          // clipboard unavailable — the ID is on screen anyway
+                        }
+                      }}
+                      className="mt-1 text-xs text-ink/60 hover:text-gold transition-colors"
+                    >
+                      {upiId} {copied ? "· copied ✓" : "· tap to copy"}
+                    </button>
+                  )}
                 </div>
 
-                {/* UPI deep link button — works on mobile */}
-                {settings.upiId && (
+                {/* `upi://` only opens an app on a phone; desktop gets the QR. */}
+                {upiPayable && isTouchDevice && (
                   <a
-                    href={`upi://pay?pa=${encodeURIComponent(settings.upiId)}&pn=Lakshiraah&am=${total}&cu=INR&tn=${encodeURIComponent(orderId ?? "Jewellery Order")}`}
+                    href={upiLink}
                     className="w-full rounded-full bg-[#5f259f] text-white text-sm font-medium py-3 text-center hover:bg-[#4a1a80] transition-colors"
                   >
                     📱 Open UPI App to Pay
                   </a>
+                )}
+                {upiPayable && !isTouchDevice && (
+                  <p className="text-center text-xs text-ink/50 leading-relaxed">
+                    Scan this QR with any UPI app — GPay, PhonePe, Paytm or your bank app —
+                    or copy the UPI ID above and pay {formatRupee(total)} from your phone.
+                  </p>
                 )}
               </div>
 
@@ -295,9 +353,13 @@ export default function CheckoutPage() {
                   {placing ? "Confirming…" : "I've paid — Confirm order ✓"}
                 </button>
               </div>
-              <p className="mt-3 text-xs text-ink/40">
-                Your order will be verified by our team within 24 hours after payment confirmation.
-              </p>
+              {confirmError ? (
+                <p className="mt-3 text-xs text-red-600 max-w-sm leading-relaxed">{confirmError}</p>
+              ) : (
+                <p className="mt-3 text-xs text-ink/40">
+                  Your order will be verified by our team within 24 hours after payment confirmation.
+                </p>
+              )}
             </div>
           )}
         </div>

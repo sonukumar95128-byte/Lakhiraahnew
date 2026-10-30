@@ -13,6 +13,7 @@ export type GuestOrder = {
   items: { name: string; quantity: number; price: number }[];
   total: number;
   utrNumber?: string; // payment reference entered by customer
+  customerClaimedPaidAt?: string; // customer said they paid — still needs admin verification
 };
 
 async function isAdmin() {

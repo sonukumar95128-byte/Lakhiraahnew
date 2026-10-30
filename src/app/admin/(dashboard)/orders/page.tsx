@@ -83,6 +83,15 @@ export default function AdminOrdersPage() {
                   <p className="text-sm text-ink/80 font-medium">{order.customerName}</p>
                   <p className="text-xs text-ink/50">{order.phone}</p>
                   <p className="text-xs text-ink/50 mt-0.5">{order.address}</p>
+                  {order.customerClaimedPaidAt && order.status === "pending_payment" && (
+                    <p className="text-xs text-amber-600 mt-1">
+                      Customer says they paid on{" "}
+                      {new Date(order.customerClaimedPaidAt).toLocaleString("en-IN", {
+                        day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit",
+                      })}{" "}
+                      — verify before marking paid
+                    </p>
+                  )}
                   {order.utrNumber && (
                     <p className="text-xs text-green-600 mt-1">UTR: {order.utrNumber}</p>
                   )}

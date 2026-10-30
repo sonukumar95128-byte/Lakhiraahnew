@@ -13,6 +13,45 @@ const FILTER_FIELDS: { key: keyof FilterOptions; label: string }[] = [
   { key: "occasions", label: "Occasions" },
 ];
 
+// Handles customers actually pay to. A typo here (say @ybi for @ybl) makes
+// every UPI app reject the payment, so flag it before orders are lost.
+const KNOWN_UPI_HANDLES = [
+  "ybl", "ibl", "axl", "apl", "okaxis", "okhdfcbank", "okicici", "oksbi",
+  "paytm", "ptyes", "ptaxis", "ptsbi", "pthdfc", "upi", "airtel", "freecharge",
+  "axisbank", "hdfcbank", "icici", "sbi", "kotak", "yesbank", "idfcbank",
+  "indus", "barodampay", "pnb", "unionbank", "cnrb", "fbl", "jupiteraxis",
+  "naviaxis", "slc", "waaxis", "wasbi", "waicici", "rmhdfcbank", "superyes",
+];
+
+function UpiIdCheck({ upiId }: { upiId: string }) {
+  const value = (upiId ?? "").trim();
+  if (!value) return null;
+
+  const shaped = /^[\w.\-]{2,}@[a-zA-Z]{2,}$/.test(value);
+  if (!shaped) {
+    return (
+      <p className="mt-2 text-xs text-red-600">
+        This doesn&apos;t look like a UPI ID. It should read like <code>name@bank</code>, e.g.{" "}
+        <code>9876543210@ybl</code>. Customers will see an error instead of a QR code.
+      </p>
+    );
+  }
+
+  const handle = value.split("@")[1].toLowerCase();
+  if (!KNOWN_UPI_HANDLES.includes(handle)) {
+    return (
+      <p className="mt-2 text-xs text-amber-600">
+        <strong>@{handle}</strong> isn&apos;t a handle we recognise — double-check it against your UPI
+        app. A wrong handle makes every payment fail with &ldquo;invalid UPI ID&rdquo;. (PhonePe is
+        usually <code>@ybl</code>, Paytm <code>@paytm</code>, GPay <code>@okaxis</code> or{" "}
+        <code>@oksbi</code>.)
+      </p>
+    );
+  }
+
+  return <p className="mt-2 text-xs text-green-700">Looks good — payments will go to {value}.</p>;
+}
+
 function TagEditor({ label, values, onChange }: { label: string; values: string[]; onChange: (v: string[]) => void }) {
   const [input, setInput] = useState("");
 
@@ -141,6 +180,7 @@ export default function AdminSettingsPage() {
             placeholder="e.g. yourname@upi or 9876543210@paytm"
             className="w-full rounded-lg border border-beige px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gold"
           />
+          <UpiIdCheck upiId={settings.upiId} />
           <p className="mt-2 text-xs text-ink/40">Customers will see a QR code + UPI link at checkout to pay directly to you.</p>
         </div>
 
